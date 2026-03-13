@@ -249,21 +249,47 @@ function initCharts() {
     mainChart = new Chart(ctxMain, {
         type: 'bar',
         data: {
-            labels: ['Semana 1', 'Semana 2', 'Semana 3', 'Semana 4'],
+            labels: ['Semana 1', 'Semana 2', 'Semana 3', 'Semana 4', 'Semana 5', 'Semana 6', 'Semana 7'],
             datasets: [{
                 label: 'Gastos (R$)',
-                data: [1800, 1200, 950, 400],
-                backgroundColor: '#6366f1',
-                borderRadius: 8
+                data: [1200, 950, 1800, 400, 750, 1100, 850],
+                backgroundColor: [
+                    '#6366f1', // Azul (Semana 1)
+                    '#10b981', // Verde (Semana 2)
+                    '#f59e0b', // Laranja (Semana 3)
+                    '#f43f5e', // Rosa (Semana 4)
+                    '#8b5cf6', // Roxo (Semana 5)
+                    '#06b6d4', // Ciano (Semana 6)
+                    '#ec4899'  // Magenta (Semana 7)
+                ],
+                borderRadius: 8,
+                borderWidth: 0
             }]
         },
         options: {
             responsive: true,
             maintainAspectRatio: false,
-            plugins: { legend: { display: false } },
+            plugins: { 
+                legend: { display: false },
+                tooltip: {
+                    backgroundColor: '#1e293b',
+                    titleColor: '#f8fafc',
+                    bodyColor: '#f8fafc',
+                    borderColor: 'rgba(255,255,255,0.1)',
+                    borderWidth: 1,
+                    padding: 12,
+                    displayColors: false
+                }
+            },
             scales: {
-                y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94a3b8' } },
-                x: { grid: { display: false }, ticks: { color: '#94a3b8' } }
+                y: { 
+                    grid: { color: 'rgba(255,255,255,0.05)', drawBorder: false }, 
+                    ticks: { color: '#94a3b8', font: { size: 11 } } 
+                },
+                x: { 
+                    grid: { display: false }, 
+                    ticks: { color: '#94a3b8', font: { size: 11 } } 
+                }
             }
         }
     });
