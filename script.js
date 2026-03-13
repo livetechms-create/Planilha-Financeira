@@ -1,11 +1,18 @@
 // --- PERSISTÊNCIA DE DADOS ---
 function saveToLocalStorage() {
-    const dataToSave = {
-        incomeValue: incomeValue,
-        transactions: transactions,
-        userData: userData
-    };
-    localStorage.setItem('financeFlowData', JSON.stringify(dataToSave));
+    try {
+        const dataToSave = {
+            incomeValue: incomeValue,
+            transactions: transactions,
+            userData: userData
+        };
+        localStorage.setItem('financeFlowData', JSON.stringify(dataToSave));
+    } catch (e) {
+        console.error("Erro ao salvar dados:", e);
+        if (e.name === 'QuotaExceededError') {
+            alert("A foto de perfil é muito pesada e não pôde ser salva. Tente uma foto menor ou com menos qualidade.");
+        }
+    }
 }
 
 function loadFromLocalStorage() {
@@ -97,14 +104,50 @@ document.getElementById('user-profile-btn').onclick = () => {
 photoInput.onchange = (e) => {
     const file = e.target.files[0];
     if (file) {
+        // Validar tamanho (opcional, mas bom ter)
+        if (file.size > 5 * 1024 * 1024) {
+            alert("A imagem é muito grande. Escolha uma foto menor que 5MB.");
+            return;
+        }
+
         const reader = new FileReader();
         reader.onload = (event) => {
-            const base64 = event.target.result;
-            // Preview temporário no modal
-            modalPreview.style.backgroundImage = `url(${base64})`;
-            modalPreview.innerText = '';
-            // Guardamos no objeto para salvar depois
-            userData.tempPhoto = base64;
+            const img = new Image();
+            img.onload = () => {
+                // Criar um canvas para redimensionar/comprimir
+                const canvas = document.createElement('canvas');
+                const MAX_WIDTH = 400; // Tamanho ideal para avatar
+                const MAX_HEIGHT = 400;
+                let width = img.width;
+                let height = img.height;
+
+                if (width > height) {
+                    if (width > MAX_WIDTH) {
+                        height *= MAX_WIDTH / width;
+                        width = MAX_WIDTH;
+                    }
+                } else {
+                    if (height > MAX_HEIGHT) {
+                        width *= MAX_HEIGHT / height;
+                        height = MAX_HEIGHT;
+                    }
+                }
+
+                canvas.width = width;
+                canvas.height = height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0, width, height);
+
+                // Converter para Base64 com qualidade reduzida
+                const compressedBase64 = canvas.toDataURL('image/jpeg', 0.7);
+                
+                // Preview temporário no modal
+                modalPreview.style.backgroundImage = `url(${compressedBase64})`;
+                modalPreview.innerText = '';
+                // Guardamos no objeto para salvar depois
+                userData.tempPhoto = compressedBase64;
+            };
+            img.src = event.target.result;
         };
         reader.readAsDataURL(file);
     }
