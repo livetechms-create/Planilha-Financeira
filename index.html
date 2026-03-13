@@ -191,6 +191,20 @@
         </div>
     </div>
 
+    <!-- Modal para renomear perfil -->
+    <div class="modal" id="profile-modal">
+        <div class="modal-content">
+            <h3>Editar Nome do Perfil</h3>
+            <div style="display: flex; flex-direction: column; gap: 1.2rem; margin-top: 1.5rem;">
+                <input type="text" id="new-user-name" placeholder="Digite seu nome..." style="background: #0f172a; border: 1px solid var(--glass-border); padding: 1rem; border-radius: 12px; color: white;">
+                <div class="modal-actions">
+                    <button type="button" class="btn-cancel" id="close-profile-modal">Cancelar</button>
+                    <button type="button" class="btn-submit" id="save-profile-name">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Painel Lateral de Notificações -->
     <div class="notification-drawer" id="notification-drawer">
         <div class="drawer-header">

@@ -60,17 +60,30 @@ const userDisplayName = document.getElementById('user-display-name');
 const userAvatar = document.getElementById('user-avatar');
 
 // Funções de Perfil
+const profileModal = document.getElementById('profile-modal');
+const inputNewName = document.getElementById('new-user-name');
+
 function updateProfileUI() {
     if(userDisplayName) userDisplayName.innerText = userData.name;
     if(userAvatar) userAvatar.innerText = userData.name.charAt(0).toUpperCase();
 }
 
 document.getElementById('user-profile-btn').onclick = () => {
-    const newName = prompt("Como você gostaria de ser chamado?", userData.name);
+    inputNewName.value = userData.name;
+    profileModal.classList.add('active');
+};
+
+document.getElementById('close-profile-modal').onclick = () => {
+    profileModal.classList.remove('active');
+};
+
+document.getElementById('save-profile-name').onclick = () => {
+    const newName = inputNewName.value;
     if (newName && newName.trim().length > 0) {
-        userData.name = newName;
+        userData.name = newName.trim();
         updateProfileUI();
-        saveToLocalStorage(); // Salva alteração de nome
+        saveToLocalStorage();
+        profileModal.classList.remove('active');
     }
 };
 
