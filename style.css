@@ -638,3 +638,124 @@ tbody tr:hover {
     max-height: 280px !important;
     width: 100% !important;
 }
+
+/* --- RESPONSIVIDADE (MOBILE) --- */
+@media (max-width: 768px) {
+    .app-container {
+        flex-direction: column;
+    }
+
+    /* Sidebar vira Bottom Nav no Mobile */
+    .sidebar {
+        width: 100% !important;
+        height: 70px !important;
+        position: fixed;
+        bottom: 0;
+        top: auto;
+        left: 0;
+        flex-direction: row;
+        padding: 0 0.5rem !important;
+        justify-content: space-around;
+        align-items: center;
+        border-right: none;
+        border-top: 1px solid var(--border-color);
+        border-radius: 20px 20px 0 0;
+        backdrop-filter: blur(20px);
+        background: rgba(12, 11, 46, 0.95) !important;
+    }
+
+    .logo, .btn-toggle, #user-profile-btn .user-info, .sidebar .nav-item span {
+        display: none !important;
+    }
+
+    nav {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        margin: 0 !important;
+    }
+
+    .nav-item {
+        margin: 0 !important;
+        padding: 10px !important;
+        flex: 1;
+        justify-content: center !important;
+    }
+
+    .nav-item i {
+        font-size: 1.6rem !important;
+    }
+
+    .user-profile {
+        margin: 0 !important;
+        padding: 0 !important;
+        border-top: none !important;
+        width: auto !important;
+    }
+
+    .avatar {
+        width: 35px;
+        height: 35px;
+    }
+
+    /* Ajuste de Margem do Conteúdo Principal */
+    .main-content {
+        margin-left: 0 !important;
+        margin-bottom: 80px; /* Espaço para a bottom nav */
+        padding: 1rem !important;
+        width: 100% !important;
+    }
+
+    .top-header {
+        flex-direction: column-reverse;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+
+    .search-bar {
+        width: 100% !important;
+    }
+
+    .header-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    /* Empilhamento de Cards e Gráficos */
+    .overview-cards {
+        grid-template-columns: 1fr !important;
+        gap: 1rem;
+    }
+
+    .charts-section {
+        grid-template-columns: 1fr !important;
+    }
+
+    .chart-container {
+        min-height: 300px;
+    }
+
+    /* Tabela Scrollable no Mobile */
+    .transaction-list {
+        overflow-x: auto;
+        padding: 1rem;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    table {
+        min-width: 500px;
+    }
+
+    /* Modais Mobile */
+    .modal-content {
+        padding: 1.5rem;
+        max-width: 95%;
+        border-radius: 20px;
+    }
+
+    /* Drawer de Notificações Mobile */
+    .notification-drawer {
+        width: 100% !important;
+        right: -100%;
+    }
+}
