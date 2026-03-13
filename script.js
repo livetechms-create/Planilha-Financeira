@@ -301,11 +301,7 @@ function updateUI() {
 
         const row = document.createElement('tr');
         row.style.cursor = 'pointer';
-        row.onclick = (e) => {
-            if (e.target.closest('.btn-delete')) return;
-            openEditModal(t.id);
-        };
-
+        
         row.innerHTML = `
             <td><strong>${t.desc}</strong></td>
             <td><span class="category-tag">${t.category}</span></td>
@@ -313,11 +309,24 @@ function updateUI() {
             <td>R$ ${t.value.toFixed(2)}</td>
             <td><span class="status-badge status-${t.status}">${t.status === 'pago' ? 'Pago' : 'Pendente'}</span></td>
             <td>
-                <button class="btn-delete" onclick="deleteTransaction(${t.id})">
+                <button class="btn-delete" title="Excluir Gasto">
                     <i data-lucide="trash-2" style="width: 18px"></i>
                 </button>
             </td>
         `;
+
+        // Evento para abrir edição (na linha toda)
+        row.addEventListener('click', () => {
+            openEditModal(t.id);
+        });
+
+        // Evento para excluir (específico no botão)
+        const deleteBtn = row.querySelector('.btn-delete');
+        deleteBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // IMPORTANTE: Impede que a linha (row) receba o clique e abra o modal de editar
+            deleteTransaction(t.id);
+        });
+
         tbody.appendChild(row);
     });
 
