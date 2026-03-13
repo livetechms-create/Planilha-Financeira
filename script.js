@@ -167,6 +167,25 @@ window.addEventListener('click', (e) => {
     }
 });
 
+// --- SIDEBAR COLLAPSE ---
+const sidebar = document.querySelector('.sidebar');
+const sidebarToggle = document.getElementById('sidebar-toggle');
+
+// Iniciar colapsada como solicitado ("fique recuada")
+sidebar.classList.add('collapsed');
+
+sidebarToggle.onclick = (e) => {
+    e.stopPropagation();
+    sidebar.classList.toggle('collapsed');
+};
+
+// Se clicar na sidebar enquanto colapsada, ela se revela
+sidebar.onclick = () => {
+    if (sidebar.classList.contains('collapsed')) {
+        sidebar.classList.remove('collapsed');
+    }
+};
+
 // Editar renda
 incomeCard.addEventListener('click', () => {
     const newVal = prompt("Digite o novo valor do seu Dinheiro Disponível (R$):", incomeValue);
