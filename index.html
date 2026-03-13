@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinanceFlow | Dashboard de Gastos Pessoais</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <!-- Ícones e Gráficos -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i data-lucide="wallet"></i>
+                <span>FinanceFlow</span>
+            </div>
+            <nav id="sidebar-nav">
+                <div class="nav-item active" data-tab="dashboard">
+                    <i data-lucide="layout-dashboard"></i>
+                    <span>Dashboard</span>
+                </div>
+                <div class="nav-item" data-tab="investments">
+                    <i data-lucide="trending-up"></i>
+                    <span>Investimentos</span>
+                </div>
+                <div class="nav-item" data-tab="settings">
+                    <i data-lucide="settings"></i>
+                    <span>Configurações</span>
+                </div>
+            </nav>
+            <div class="user-profile" id="user-profile-btn" title="Clique para editar seu perfil">
+                <div class="avatar" id="user-avatar">U</div>
+                <div class="user-info">
+                    <p class="name" id="user-display-name">Carregando...</p>
+                    <p class="premium">Membro Premium</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-header">
+                <div class="search-bar">
+                    <i data-lucide="search"></i>
+                    <input type="text" placeholder="Pesquisar movimentação...">
+                </div>
+                <div class="header-actions">
+                    <span class="date-picker" id="current-date">Março de 2024</span>
+                    <div class="notification-icon" id="notif-btn">
+                        <i data-lucide="bell"></i>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- ABA DASHBOARD -->
+            <div id="tab-dashboard" class="tab-content active">
+                <section class="overview-cards">
+                    <div class="card balance-card">
+                        <div class="card-header">
+                            <p>Dinheiro Disponível</p>
+                            <i data-lucide="dollar-sign"></i>
+                        </div>
+                        <h2 id="total-income">R$ 5.000,00</h2>
+                        <p class="card-footer text-success"><i data-lucide="arrow-up-right"></i> Gerencie sua renda</p>
+                    </div>
+                    <div class="card expense-card">
+                        <div class="card-header">
+                            <p>Gastos Totais</p>
+                            <i data-lucide="credit-card"></i>
+                        </div>
+                        <h2 id="total-expenses">R$ 0,00</h2>
+                        <p class="card-footer text-danger"><i data-lucide="arrow-down-right"></i> Total do mês</p>
+                    </div>
+                    <div class="card liquid-card">
+                        <div class="card-header">
+                            <p>Saldo Restante</p>
+                            <i data-lucide="piggy-bank"></i>
+                        </div>
+                        <h2 id="remaining-balance">R$ 0,00</h2>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="charts-section">
+                    <div class="chart-container main-chart">
+                        <h3>Visão Geral Diária</h3>
+                        <canvas id="mainFinanceChart"></canvas>
+                    </div>
+                    <div class="chart-container pie-chart">
+                        <h3>Gastos por Categoria</h3>
+                        <canvas id="categoryChart"></canvas>
+                    </div>
+                </section>
+
+                <section class="data-section">
+                    <div class="transaction-list">
+                        <div class="section-header">
+                            <h3>Gastos do Mês</h3>
+                            <button class="btn-add" id="open-modal"><i data-lucide="plus"></i> Novo Gasto</button>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Gasto</th>
+                                    <th>Categoria</th>
+                                    <th>Data</th>
+                                    <th>Valor</th>
+                                    <th>Status</th>
+                                    <th>Ação</th>
+                                </tr>
+                            </thead>
+                            <tbody id="transaction-tbody">
+                                <!-- Injetado via JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+
+            <!-- ABA INVESTIMENTOS (Placeholder Interativo) -->
+            <div id="tab-investments" class="tab-content">
+                <div class="card glass-card">
+                    <h3>Meus Investimentos</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 2rem;">Acompanhe o rendimento do seu patrimônio.</p>
+                    <div class="investment-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div class="card" style="background: rgba(255,255,255,0.02)">
+                            <p>Tesouro Direto</p>
+                            <h4>R$ 12.450,00</h4>
+                            <span class="text-success">+0.8% este mês</span>
+                        </div>
+                        <div class="card" style="background: rgba(255,255,255,0.02)">
+                            <p>Ações (B3)</p>
+                            <h4>R$ 5.200,00</h4>
+                            <span class="text-danger">-1.2% este mês</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ABA CONFIGURAÇÕES -->
+            <div id="tab-settings" class="tab-content">
+                <div class="card glass-card">
+                    <h3>Configurações do Perfil</h3>
+                    <div class="settings-form" style="margin-top: 2rem; display: flex; flex-direction: column; gap: 1.5rem;">
+                        <div class="setting-item">
+                            <label>Meta de Economia Mensal (%)</label>
+                            <input type="range" min="0" max="100" value="20" style="width: 100%; margin-top: 10px;">
+                        </div>
+                        <div class="setting-item">
+                            <label>Notificações por E-mail</label>
+                            <div style="display: flex; gap: 1rem; margin-top: 10px;">
+                                <button class="btn-add" style="background: var(--success-color)">Ativado</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal para adicionar gasto -->
+    <div class="modal" id="expense-modal">
+        <div class="modal-content">
+            <h3>Adicionar Novo Gasto</h3>
+            <form id="expense-form">
+                <input type="text" id="desc" placeholder="Ex: Mercado, Aluguel..." required>
+                <select id="category" required>
+                    <option value="Moradia">Moradia</option>
+                    <option value="Alimentação">Alimentação</option>
+                    <option value="Transporte">Transporte</option>
+                    <option value="Lazer">Lazer</option>
+                    <option value="Saúde">Saúde</option>
+                    <option value="Outros">Outros</option>
+                </select>
+                <input type="number" id="value" placeholder="Valor (R$)" step="0.01" required>
+                <div class="modal-actions">
+                    <button type="button" class="btn-cancel" id="close-modal">Cancelar</button>
+                    <button type="submit" class="btn-submit">Salvar Gasto</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Painel Lateral de Notificações -->
+    <div class="notification-drawer" id="notification-drawer">
+        <div class="drawer-header">
+            <h3>Notificações</h3>
+            <button id="close-notif" class="btn-icon"><i data-lucide="x"></i></button>
+        </div>
+        <div class="drawer-body" id="notif-content">
+            <!-- Injetado via JS -->
+            <div class="notif-item">
+                <i data-lucide="info" class="text-success"></i>
+                <div>
+                    <p>Saldo Atualizado</p>
+                    <span>Sua renda foi registrada com sucesso.</span>
+                </div>
+            </div>
+            <div class="notif-item">
+                <i data-lucide="alert-triangle" class="text-danger"></i>
+                <div>
+                    <p>Vencimento Próximo</p>
+                    <span>Sua conta de Luz vence em 2 dias.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
