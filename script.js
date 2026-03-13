@@ -62,18 +62,56 @@ const userAvatar = document.getElementById('user-avatar');
 // Funções de Perfil
 const profileModal = document.getElementById('profile-modal');
 const inputNewName = document.getElementById('new-user-name');
+const photoInput = document.getElementById('user-photo-input');
+const modalPreview = document.getElementById('modal-avatar-preview');
+const triggerBtn = document.getElementById('trigger-photo-upload');
+
+function updateAvatarUI(avatarEl, data) {
+    if (!avatarEl) return;
+    if (data.photo) {
+        avatarEl.style.backgroundImage = `url(${data.photo})`;
+        avatarEl.innerText = '';
+    } else {
+        avatarEl.style.backgroundImage = 'none';
+        avatarEl.innerText = data.name.charAt(0).toUpperCase();
+    }
+}
 
 function updateProfileUI() {
     if(userDisplayName) userDisplayName.innerText = userData.name;
-    if(userAvatar) userAvatar.innerText = userData.name.charAt(0).toUpperCase();
+    updateAvatarUI(userAvatar, userData);
+    updateAvatarUI(modalPreview, userData);
 }
 
 document.getElementById('user-profile-btn').onclick = () => {
     inputNewName.value = userData.name;
+    updateAvatarUI(modalPreview, userData);
     profileModal.classList.add('active');
 };
 
+// Logica de Troca de Foto
+[modalPreview, triggerBtn].forEach(el => {
+    el.onclick = () => photoInput.click();
+});
+
+photoInput.onchange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            const base64 = event.target.result;
+            // Preview temporário no modal
+            modalPreview.style.backgroundImage = `url(${base64})`;
+            modalPreview.innerText = '';
+            // Guardamos no objeto para salvar depois
+            userData.tempPhoto = base64;
+        };
+        reader.readAsDataURL(file);
+    }
+};
+
 document.getElementById('close-profile-modal').onclick = () => {
+    delete userData.tempPhoto; // Cancela alteração de foto
     profileModal.classList.remove('active');
 };
 
@@ -81,9 +119,16 @@ document.getElementById('save-profile-name').onclick = () => {
     const newName = inputNewName.value;
     if (newName && newName.trim().length > 0) {
         userData.name = newName.trim();
+        // Se houver uma nova foto temporária, ela vira a oficial
+        if (userData.tempPhoto) {
+            userData.photo = userData.tempPhoto;
+            delete userData.tempPhoto;
+        }
         updateProfileUI();
         saveToLocalStorage();
         profileModal.classList.remove('active');
+    } else {
+        alert("Por favor, digite um nome válido.");
     }
 };
 

@@ -106,6 +106,9 @@ nav {
     justify-content: center;
     font-weight: bold;
     flex-shrink: 0;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
 }
 
 .user-info p {
