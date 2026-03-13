@@ -171,20 +171,20 @@ window.addEventListener('click', (e) => {
 const sidebar = document.querySelector('.sidebar');
 const sidebarToggle = document.getElementById('sidebar-toggle');
 
-// Iniciar colapsada como solicitado ("fique recuada")
+// Iniciar colapsada como solicitado
 sidebar.classList.add('collapsed');
 
-sidebarToggle.onclick = (e) => {
-    e.stopPropagation();
+sidebarToggle.addEventListener('click', (e) => {
+    e.stopPropagation(); // Impede que o clique no botão ative o clique da sidebar
     sidebar.classList.toggle('collapsed');
-};
+});
 
 // Se clicar na sidebar enquanto colapsada, ela se revela
-sidebar.onclick = () => {
+sidebar.addEventListener('click', () => {
     if (sidebar.classList.contains('collapsed')) {
         sidebar.classList.remove('collapsed');
     }
-};
+});
 
 // Editar renda
 incomeCard.addEventListener('click', () => {

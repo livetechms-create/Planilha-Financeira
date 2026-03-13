@@ -2,7 +2,7 @@
     --bg-color: #141414;
     --sidebar-bg: #0c0b2e;
     --card-bg: rgba(27, 27, 27, 0.527);
-    --accent-color: #6366f1;
+    --accent-color: #63f17b;
     --accent-hover: #4f46e5;
     --success-color: #10b981;
     --danger-color: #f43f5e;
@@ -79,8 +79,15 @@ body {
 }
 
 .btn-toggle {
+    background: transparent;
+    border: none;
+    color: var(--accent-color);
     cursor: pointer;
     transition: transform 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
 }
 
 .sidebar.collapsed .btn-toggle {
