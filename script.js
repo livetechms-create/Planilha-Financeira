@@ -240,30 +240,22 @@ incomeCard.addEventListener('click', () => {
 });
 
 // Gráficos
-let mainChart, categoryChart;
+let mainChart, categoryChart, daysOfWeekChart;
 
 function initCharts() {
     const ctxMain = document.getElementById('mainFinanceChart').getContext('2d');
     const ctxPie = document.getElementById('categoryChart').getContext('2d');
+    const ctxDays = document.getElementById('daysOfWeekChart').getContext('2d');
 
     mainChart = new Chart(ctxMain, {
         type: 'bar',
         data: {
-            labels: ['Semana 1', 'Semana 2', 'Semana 3', 'Semana 4', 'Semana 5', 'Semana 6', 'Semana 7'],
+            labels: ['Semana 1', 'Semana 2', 'Semana 3', 'Semana 4'],
             datasets: [{
                 label: 'Gastos (R$)',
-                data: [1200, 950, 1800, 400, 750, 1100, 850],
-                backgroundColor: [
-                    '#6366f1', // Azul (Semana 1)
-                    '#10b981', // Verde (Semana 2)
-                    '#f59e0b', // Laranja (Semana 3)
-                    '#f43f5e', // Rosa (Semana 4)
-                    '#8b5cf6', // Roxo (Semana 5)
-                    '#06b6d4', // Ciano (Semana 6)
-                    '#ec4899'  // Magenta (Semana 7)
-                ],
-                borderRadius: 8,
-                borderWidth: 0
+                data: [1200, 950, 1800, 400],
+                backgroundColor: '#6366f1',
+                borderRadius: 8
             }]
         },
         options: {
@@ -282,14 +274,49 @@ function initCharts() {
                 }
             },
             scales: {
-                y: { 
-                    grid: { color: 'rgba(255,255,255,0.05)', drawBorder: false }, 
-                    ticks: { color: '#94a3b8', font: { size: 11 } } 
-                },
-                x: { 
-                    grid: { display: false }, 
-                    ticks: { color: '#94a3b8', font: { size: 11 } } 
+                y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94a3b8' } },
+                x: { grid: { display: false }, ticks: { color: '#94a3b8' } }
+            }
+        }
+    });
+
+    daysOfWeekChart = new Chart(ctxDays, {
+        type: 'bar',
+        data: {
+            labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+            datasets: [{
+                label: 'Gastos (R$)',
+                data: [150, 200, 180, 220, 300, 450, 120],
+                backgroundColor: [
+                    '#6366f1', // Segunda (Azul)
+                    '#10b981', // Terça (Verde)
+                    '#f59e0b', // Quarta (Laranja)
+                    '#f43f5e', // Quinta (Rosa)
+                    '#8b5cf6', // Sexta (Roxo)
+                    '#06b6d4', // Sábado (Ciano)
+                    '#ec4899'  // Domingo (Magenta)
+                ],
+                borderRadius: 8
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { 
+                legend: { display: false },
+                tooltip: {
+                    backgroundColor: '#1e293b',
+                    titleColor: '#f8fafc',
+                    bodyColor: '#f8fafc',
+                    borderColor: 'rgba(255,255,255,0.1)',
+                    borderWidth: 1,
+                    padding: 12,
+                    displayColors: false
                 }
+            },
+            scales: {
+                y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94a3b8' } },
+                x: { grid: { display: false }, ticks: { color: '#94a3b8' } }
             }
         }
     });
