@@ -1,6 +1,6 @@
 :root {
     --bg-color: #141414;
-    --sidebar-bg: #1d1d1d;
+    --sidebar-bg: #15ff00;
     --card-bg: rgba(27, 27, 27, 0.527);
     --accent-color: #6366f1;
     --accent-hover: #4f46e5;
@@ -70,7 +70,8 @@ nav {
     margin-bottom: 0.5rem;
 }
 
-.nav-item:hover, .nav-item.active {
+.nav-item:hover,
+.nav-item.active {
     background-color: rgba(99, 102, 241, 0.1);
     color: var(--text-primary);
 }
@@ -136,8 +137,15 @@ nav {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Header */
@@ -334,8 +342,15 @@ tbody tr:hover {
     font-size: 0.75rem;
 }
 
-.status-paid { background: rgba(16, 185, 129, 0.1); color: var(--success-color); }
-.status-pending { background: rgba(244, 63, 94, 0.1); color: var(--danger-color); }
+.status-paid {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--success-color);
+}
+
+.status-pending {
+    background: rgba(244, 63, 94, 0.1);
+    color: var(--danger-color);
+}
 
 /* Progress Bar */
 .progress-bar {
@@ -418,7 +433,8 @@ tbody tr:hover {
     margin-top: 1.5rem;
 }
 
-#expense-form input, #expense-form select {
+#expense-form input,
+#expense-form select {
     background: #0f172a;
     border: 1px solid var(--glass-border);
     padding: 1rem;
@@ -455,7 +471,8 @@ tbody tr:hover {
 .notification-drawer {
     position: fixed;
     top: 0;
-    right: -350px; /* Hidden by default */
+    right: -350px;
+    /* Hidden by default */
     width: 350px;
     height: 100vh;
     background: #1e1e1e;
