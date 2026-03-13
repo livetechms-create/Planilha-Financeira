@@ -9,13 +9,22 @@ function saveToLocalStorage() {
 }
 
 function loadFromLocalStorage() {
-    const savedData = localStorage.getItem('financeFlowData');
-    if (savedData) {
-        const parsed = JSON.parse(savedData);
-        incomeValue = parsed.incomeValue || 5000;
-        transactions = parsed.transactions || [];
-        userData = parsed.userData || { name: 'Seu Nome', avatar: 'U' };
-        return true;
+    try {
+        const savedData = localStorage.getItem('financeFlowData');
+        if (savedData) {
+            const parsed = JSON.parse(savedData);
+            
+            // Só substitui se o dado existir no storage
+            if (parsed.incomeValue !== undefined) incomeValue = parsed.incomeValue;
+            if (parsed.transactions) transactions = parsed.transactions;
+            if (parsed.userData) {
+                // Mescla os dados do usuário para não perder campos novos no futuro
+                userData = { ...userData, ...parsed.userData };
+            }
+            return true;
+        }
+    } catch (e) {
+        console.error("Erro ao carregar dados:", e);
     }
     return false;
 }
