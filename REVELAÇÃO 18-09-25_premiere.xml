@@ -1,0 +1,1787 @@
+<?xml version="1.0" ?>
+<xmeml version="5">
+  <sequence id="sequence-1">
+    <name>Corte Automático - REVELAÇÃO 18-09-25.mp4</name>
+    <duration>6699</duration>
+    <rate>
+      <ntsc>FALSE</ntsc>
+      <timebase>29</timebase>
+    </rate>
+    <media>
+      <video>
+        <track>
+          <clipitem id="clipitem-0">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>0</start>
+            <end>553</end>
+            <in>0</in>
+            <out>553</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="clipitem-1">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>553</start>
+            <end>616</end>
+            <in>599</in>
+            <out>662</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="clipitem-2">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>616</start>
+            <end>622</end>
+            <in>697</in>
+            <out>704</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="clipitem-3">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>622</start>
+            <end>653</end>
+            <in>720</in>
+            <out>750</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="clipitem-4">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>653</start>
+            <end>666</end>
+            <in>769</in>
+            <out>782</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="clipitem-5">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>666</start>
+            <end>696</end>
+            <in>803</in>
+            <out>834</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="clipitem-6">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>696</start>
+            <end>728</end>
+            <in>867</in>
+            <out>898</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="clipitem-7">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>728</start>
+            <end>763</end>
+            <in>940</in>
+            <out>975</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="clipitem-8">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>763</start>
+            <end>788</end>
+            <in>999</in>
+            <out>1024</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="clipitem-9">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>788</start>
+            <end>846</end>
+            <in>1046</in>
+            <out>1105</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="clipitem-10">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>846</start>
+            <end>846</end>
+            <in>1136</in>
+            <out>1136</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="clipitem-11">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>846</start>
+            <end>864</end>
+            <in>1187</in>
+            <out>1204</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="clipitem-12">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>864</start>
+            <end>895</end>
+            <in>1252</in>
+            <out>1283</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="clipitem-13">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>895</start>
+            <end>999</end>
+            <in>1337</in>
+            <out>1441</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="clipitem-14">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>999</start>
+            <end>1050</end>
+            <in>1522</in>
+            <out>1573</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="clipitem-15">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>1050</start>
+            <end>1055</end>
+            <in>1644</in>
+            <out>1649</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="clipitem-16">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>1055</start>
+            <end>1055</end>
+            <in>1707</in>
+            <out>1707</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="clipitem-17">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>1055</start>
+            <end>1080</end>
+            <in>1736</in>
+            <out>1761</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="clipitem-18">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>1080</start>
+            <end>1082</end>
+            <in>1815</in>
+            <out>1816</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="clipitem-19">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>1082</start>
+            <end>1122</end>
+            <in>1841</in>
+            <out>1881</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="clipitem-20">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>1122</start>
+            <end>1166</end>
+            <in>1924</in>
+            <out>1968</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="clipitem-21">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>1166</start>
+            <end>1221</end>
+            <in>2130</in>
+            <out>2185</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="clipitem-22">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>1221</start>
+            <end>1282</end>
+            <in>2273</in>
+            <out>2333</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="clipitem-23">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>1282</start>
+            <end>1423</end>
+            <in>2449</in>
+            <out>2590</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="clipitem-24">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>1423</start>
+            <end>1524</end>
+            <in>2643</in>
+            <out>2744</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="clipitem-25">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>1524</start>
+            <end>1551</end>
+            <in>2799</in>
+            <out>2826</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="clipitem-26">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>1551</start>
+            <end>2039</end>
+            <in>2940</in>
+            <out>3428</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="clipitem-27">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>2039</start>
+            <end>5295</end>
+            <in>3443</in>
+            <out>6699</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+        </track>
+      </video>
+      <audio>
+        <track>
+          <clipitem id="aclipitem-0">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>0</start>
+            <end>553</end>
+            <in>0</in>
+            <out>553</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-1">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>553</start>
+            <end>616</end>
+            <in>599</in>
+            <out>662</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-2">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>616</start>
+            <end>622</end>
+            <in>697</in>
+            <out>704</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-3">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>622</start>
+            <end>653</end>
+            <in>720</in>
+            <out>750</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-4">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>653</start>
+            <end>666</end>
+            <in>769</in>
+            <out>782</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-5">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>666</start>
+            <end>696</end>
+            <in>803</in>
+            <out>834</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-6">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>696</start>
+            <end>728</end>
+            <in>867</in>
+            <out>898</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-7">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>728</start>
+            <end>763</end>
+            <in>940</in>
+            <out>975</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-8">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>763</start>
+            <end>788</end>
+            <in>999</in>
+            <out>1024</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-9">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>788</start>
+            <end>846</end>
+            <in>1046</in>
+            <out>1105</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-10">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>846</start>
+            <end>846</end>
+            <in>1136</in>
+            <out>1136</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-11">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>846</start>
+            <end>864</end>
+            <in>1187</in>
+            <out>1204</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-12">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>864</start>
+            <end>895</end>
+            <in>1252</in>
+            <out>1283</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-13">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>895</start>
+            <end>999</end>
+            <in>1337</in>
+            <out>1441</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-14">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>999</start>
+            <end>1050</end>
+            <in>1522</in>
+            <out>1573</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-15">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>1050</start>
+            <end>1055</end>
+            <in>1644</in>
+            <out>1649</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-16">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>1055</start>
+            <end>1055</end>
+            <in>1707</in>
+            <out>1707</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-17">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>1055</start>
+            <end>1080</end>
+            <in>1736</in>
+            <out>1761</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-18">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>1080</start>
+            <end>1082</end>
+            <in>1815</in>
+            <out>1816</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-19">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>1082</start>
+            <end>1122</end>
+            <in>1841</in>
+            <out>1881</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-20">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>1122</start>
+            <end>1166</end>
+            <in>1924</in>
+            <out>1968</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-21">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>1166</start>
+            <end>1221</end>
+            <in>2130</in>
+            <out>2185</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-22">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>1221</start>
+            <end>1282</end>
+            <in>2273</in>
+            <out>2333</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-23">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>1282</start>
+            <end>1423</end>
+            <in>2449</in>
+            <out>2590</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-24">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>1423</start>
+            <end>1524</end>
+            <in>2643</in>
+            <out>2744</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-25">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>1524</start>
+            <end>1551</end>
+            <in>2799</in>
+            <out>2826</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-26">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>1551</start>
+            <end>2039</end>
+            <in>2940</in>
+            <out>3428</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-27">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>2039</start>
+            <end>5295</end>
+            <in>3443</in>
+            <out>6699</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+        </track>
+        <track>
+          <clipitem id="aclipitem-0">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>0</start>
+            <end>553</end>
+            <in>0</in>
+            <out>553</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-1">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>553</start>
+            <end>616</end>
+            <in>599</in>
+            <out>662</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-2">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>616</start>
+            <end>622</end>
+            <in>697</in>
+            <out>704</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-3">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>622</start>
+            <end>653</end>
+            <in>720</in>
+            <out>750</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-4">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>653</start>
+            <end>666</end>
+            <in>769</in>
+            <out>782</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-5">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>666</start>
+            <end>696</end>
+            <in>803</in>
+            <out>834</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-6">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>696</start>
+            <end>728</end>
+            <in>867</in>
+            <out>898</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-7">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>728</start>
+            <end>763</end>
+            <in>940</in>
+            <out>975</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-8">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>763</start>
+            <end>788</end>
+            <in>999</in>
+            <out>1024</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-9">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>788</start>
+            <end>846</end>
+            <in>1046</in>
+            <out>1105</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-10">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>846</start>
+            <end>846</end>
+            <in>1136</in>
+            <out>1136</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-11">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>846</start>
+            <end>864</end>
+            <in>1187</in>
+            <out>1204</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-12">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>864</start>
+            <end>895</end>
+            <in>1252</in>
+            <out>1283</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-13">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>895</start>
+            <end>999</end>
+            <in>1337</in>
+            <out>1441</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-14">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>999</start>
+            <end>1050</end>
+            <in>1522</in>
+            <out>1573</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-15">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>1050</start>
+            <end>1055</end>
+            <in>1644</in>
+            <out>1649</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-16">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>1055</start>
+            <end>1055</end>
+            <in>1707</in>
+            <out>1707</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-17">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>1055</start>
+            <end>1080</end>
+            <in>1736</in>
+            <out>1761</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-18">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>1080</start>
+            <end>1082</end>
+            <in>1815</in>
+            <out>1816</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-19">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>1082</start>
+            <end>1122</end>
+            <in>1841</in>
+            <out>1881</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-20">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>1122</start>
+            <end>1166</end>
+            <in>1924</in>
+            <out>1968</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-21">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>1166</start>
+            <end>1221</end>
+            <in>2130</in>
+            <out>2185</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-22">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>1221</start>
+            <end>1282</end>
+            <in>2273</in>
+            <out>2333</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-23">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>1282</start>
+            <end>1423</end>
+            <in>2449</in>
+            <out>2590</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-24">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>1423</start>
+            <end>1524</end>
+            <in>2643</in>
+            <out>2744</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-25">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>1524</start>
+            <end>1551</end>
+            <in>2799</in>
+            <out>2826</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-26">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>1551</start>
+            <end>2039</end>
+            <in>2940</in>
+            <out>3428</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+          <clipitem id="aclipitem-27">
+            <name>REVELAÇÃO 18-09-25.mp4</name>
+            <duration>6699</duration>
+            <rate>
+              <timebase>29</timebase>
+              <ntsc>FALSE</ntsc>
+            </rate>
+            <start>2039</start>
+            <end>5295</end>
+            <in>3443</in>
+            <out>6699</out>
+            <file id="file-1">
+              <name>REVELAÇÃO 18-09-25.mp4</name>
+              <pathurl>file://localhost/D:/ANTIGRAVITY BOTS/REVELAÇÃO 18-09-25.mp4</pathurl>
+              <rate>
+                <timebase>29</timebase>
+                <ntsc>FALSE</ntsc>
+              </rate>
+              <duration>6699</duration>
+            </file>
+          </clipitem>
+        </track>
+      </audio>
+    </media>
+  </sequence>
+</xmeml>

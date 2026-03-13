@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>SpellCheck Pro</title>
+    <style>
+        :root {
+            --bg: #2b2b2b;
+            --text: #e0e0e0;
+            --accent: #f04e23;
+            --green: #2ecc71;
+            --card: #3a3a3a;
+        }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); padding: 15px; margin: 0; }
+        .container { display: flex; flex-direction: column; gap: 15px; }
+        header { text-align: center; color: var(--accent); border-bottom: 2px solid var(--accent); padding-bottom: 10px; }
+        h2 { margin: 0; font-weight: 300; }
+        
+        button { 
+            background: var(--accent); color: white; border: none; padding: 10px; 
+            border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%;
+        }
+        button:hover { opacity: 0.9; }
+        button:disabled { background: #555; }
+
+        .item-card { 
+            background: var(--card); border-radius: 6px; padding: 10px; margin-top: 10px;
+            border-left: 4px solid var(--accent);
+        }
+        .original-text { font-style: italic; font-size: 13px; color: #aaa; margin-bottom: 8px; }
+        .error-line { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;}
+        .word-tag { color: #ff6b6b; font-weight: bold; }
+        .fix-btn { width: auto; padding: 4px 10px; font-size: 11px; background: var(--green); }
+        
+        #results { overflow-y: auto; max-height: 350px; }
+        .loader { text-align: center; display: none; margin: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header><h2>SpellCheck BR</h2></header>
+        
+        <button id="scanBtn">BUSCAR ERROS NA TIMELINE</button>
+        
+        <div class="loader" id="loader">Buscando... ⏳</div>
+        
+        <div id="results"></div>
+    </div>
+
+    <script src="./lib/CSInterface.js"></script>
+    <script>
+        const { exec } = require('child_process');
+        const path = require('path');
+        const csInterface = new CSInterface();
+        
+        const scanBtn = document.getElementById('scanBtn');
+        const resultsDiv = document.getElementById('results');
+        const loader = document.getElementById('loader');
+
+        scanBtn.onclick = () => {
+            loader.style.display = 'block';
+            resultsDiv.innerHTML = '';
+            
+            csInterface.evalScript('getTextItemsFromSequence()', (result) => {
+                if (result === "no_sequence") {
+                    alert("Por favor, abra uma sequência primeiro.");
+                    loader.style.display = 'none';
+                    return;
+                }
+                
+                const texts = JSON.parse(result);
+                if (texts.length === 0) {
+                    resultsDiv.innerHTML = '<p style="text-align:center">Nenhum texto encontrado.</p>';
+                    loader.style.display = 'none';
+                    return;
+                }
+
+                checkWithPython(texts);
+            });
+        };
+
+        function checkWithPython(data) {
+            const scriptPath = path.join(path.dirname(__filename), 'spell_check.py');
+            // Escapar JSON para linha de comando
+            const jsonStr = JSON.stringify(data).replace(/"/g, '\\"');
+            const cmd = `python "${scriptPath}" "${jsonStr}"`;
+
+            exec(cmd, (error, stdout, stderr) => {
+                loader.style.display = 'none';
+                if (error) {
+                    console.error(stderr);
+                    return;
+                }
+                
+                const results = JSON.parse(stdout);
+                displayResults(results);
+            });
+        }
+
+        function displayResults(items) {
+            let foundErrors = false;
+            items.forEach(item => {
+                if (item.errors.length > 0) {
+                    foundErrors = true;
+                    const card = document.createElement('div');
+                    card.className = 'item-card';
+                    card.innerHTML = `
+                        <div class="original-text">"${item.original}"</div>
+                        ${item.errors.map(err => `
+                            <div class="error-line">
+                                <span><span class="word-tag">${err.original}</span> → ${err.suggestion}</span>
+                                <button class="fix-btn" onclick="applyFix('${item.id}', '${item.original}', '${err.original}', '${err.suggestion}')">CORRIGIR</button>
+                            </div>
+                        `).join('')}
+                    `;
+                    resultsDiv.appendChild(card);
+                }
+            });
+            
+            if (!foundErrors) {
+                resultsDiv.innerHTML = '<p style="text-align:center; color: var(--green);">✨ Tudo certo! Nenhum erro ortográfico.</p>';
+            }
+        }
+
+        window.applyFix = (uid, fullText, oldWord, newWord) => {
+            // Substituição simples no texto completo
+            const updatedText = fullText.replace(new RegExp(oldWord, 'g'), newWord);
+            csInterface.evalScript(`updateTextInSequence("${uid}", "${updatedText}")`, (res) => {
+                if (res === "ok") {
+                    alert("Texto atualizado na timeline!");
+                    scanBtn.click(); // Recarrega
+                }
+            });
+        };
+    </script>
+</body>
+</html>

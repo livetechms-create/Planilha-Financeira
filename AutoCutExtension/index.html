@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>AutoCut</title>
+    <style>
+        :root {
+            --bg-color: #232323;
+            --text-color: #E2E2E2;
+            --accent-color: #3182CE;
+            --btn-hover: #4299E1;
+            --input-bg: #1A1A1A;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 20px;
+            overflow: hidden;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        header {
+            text-align: center;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+        h2 { font-weight: 300; margin: 0; color: var(--accent-color); }
+        .group { display: flex; flex-direction: column; gap: 5px; }
+        label { font-size: 11px; text-transform: uppercase; opacity: 0.7; }
+        input {
+            background: var(--input-bg);
+            border: 1px solid #444;
+            color: white;
+            padding: 8px;
+            border-radius: 4px;
+            outline: none;
+        }
+        button {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+            margin-top: 10px;
+        }
+        button:hover { background-color: var(--btn-hover); }
+        button:disabled { background-color: #444; cursor: not-allowed; }
+        #status {
+            font-size: 11px;
+            margin-top: 10px;
+            padding: 10px;
+            background: #111;
+            border-radius: 4px;
+            height: 100px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            color: #AAA;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h2>AUTOCUT AI</h2>
+        </header>
+
+        <div class="group">
+            <label>Sensibilidade (dB)</label>
+            <input type="text" id="threshold" value="-35">
+        </div>
+
+        <div class="group">
+            <label>Pausa Mínima (s)</label>
+            <input type="text" id="duration" value="0.5">
+        </div>
+
+        <button id="runBtn">DETECTAR E NOVO CORTE</button>
+        
+        <div id="status">Aguardando vídeo...</div>
+    </div>
+
+    <script src="./lib/CSInterface.js"></script>
+    <script>
+        const { exec } = require('child_process');
+        const path = require('path');
+        const fs = require('fs');
+        const csInterface = new CSInterface();
+
+        const btn = document.getElementById('runBtn');
+        const status = document.getElementById('status');
+
+        function log(msg) {
+            status.innerText += "\n" + msg;
+            status.scrollTop = status.scrollHeight;
+        }
+
+        btn.onclick = () => {
+            // Pegar o caminho do arquivo do Premiere via ExtendScript
+            csInterface.evalScript('getActiveSequenceFilePath()', (result) => {
+                if (!result || result === "false") {
+                    log("❌ Selecione um vídeo na sua timeline primeiro!");
+                    return;
+                }
+
+                const videoPath = result;
+                const threshold = document.getElementById('threshold').value + "dB";
+                const duration = document.getElementById('duration').value;
+                
+                // O script python que criamos antes
+                const scriptPath = path.join(path.dirname(__filename), 'process_script.py');
+                
+                log("⏳ Iniciando IA de corte...");
+                btn.disabled = true;
+
+                // Comando para rodar o Python
+                const cmd = `python "${scriptPath}" "${videoPath}" "${threshold}" "${duration}"`;
+                
+                exec(cmd, (error, stdout, stderr) => {
+                    btn.disabled = false;
+                    if (error) {
+                        log("🔴 Erro: " + stderr);
+                        return;
+                    }
+                    
+                    const xmlPath = videoPath.replace(/\.[^/.]+$/, "") + "_premiere.xml";
+                    log("✅ XML Gerado! Importando para o Premiere...");
+                    
+                    // Importar o XML gerado de volta para o Premiere
+                    csInterface.evalScript(`importXMLToProject("${xmlPath.replace(/\\/g, '/')}")`);
+                });
+            });
+        };
+    </script>
+</body>
+</html>
