@@ -736,8 +736,8 @@ tbody tr:hover {
     }
 
     .top-header {
-        flex-direction: column-reverse;
-        gap: 1rem;
+        flex-direction: column;
+        gap: 1.5rem;
         align-items: flex-start;
     }
 
