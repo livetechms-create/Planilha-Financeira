@@ -345,8 +345,15 @@ function initCharts() {
 
 function updateUI() {
     tbody.innerHTML = '';
+    const stBody = document.getElementById('statement-tbody');
+    if(stBody) stBody.innerHTML = '';
+    
     let totalSpent = 0;
+    let totalPendingValue = 0;
     const categoryTotals = {};
+
+    // Ordena por data
+    transactions.sort((a, b) => new Date(a.date) - new Date(b.date));
 
     transactions.forEach(t => {
         totalSpent += t.value;
@@ -381,7 +388,40 @@ function updateUI() {
         });
 
         tbody.appendChild(row);
+
+        // Abastece a tabela "Contas a Pagar"
+        if (t.status === 'pendente') {
+            totalPendingValue += t.value;
+            if (stBody) {
+                const stRow = document.createElement('tr');
+                stRow.style.cursor = 'pointer';
+                stRow.innerHTML = `
+                    <td><strong>${t.desc}</strong></td>
+                    <td><span class="category-tag">${t.category}</span></td>
+                    <td>${new Date(t.date).toLocaleDateString('pt-BR')}</td>
+                    <td>R$ ${t.value.toFixed(2)}</td>
+                    <td><span class="status-badge status-pending">Pendente</span></td>
+                    <td>
+                        <button class="btn-delete" title="Excluir Gasto">
+                            <i data-lucide="trash-2" style="width: 18px"></i>
+                        </button>
+                    </td>
+                `;
+                stRow.addEventListener('click', () => openEditModal(t.id));
+                const stDel = stRow.querySelector('.btn-delete');
+                stDel.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    deleteTransaction(t.id);
+                });
+                stBody.appendChild(stRow);
+            }
+        }
     });
+
+    const totalPendingHeader = document.getElementById('total-pending-header');
+    if(totalPendingHeader) {
+        totalPendingHeader.innerText = `R$ ${totalPendingValue.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
+    }
 
     lucide.createIcons();
 
@@ -419,9 +459,24 @@ function openEditModal(id = null) {
         document.getElementById('desc').value = t.desc;
         document.getElementById('category').value = t.category;
         document.getElementById('value').value = t.value;
+        const dueDateInput = document.getElementById('due-date');
+        if (dueDateInput) dueDateInput.value = t.date;
+        const statusInput = document.getElementById('status');
+        if (statusInput) statusInput.value = t.status || 'pendente';
+        const instInput = document.getElementById('installments');
+        if (instInput) {
+            instInput.value = 1;
+            instInput.disabled = true; // Desabilita parcelas na edição
+        }
         modalTitle.innerText = "Editar Gasto";
     } else {
         document.getElementById('expense-form').reset();
+        const dueDateInput = document.getElementById('due-date');
+        // Define data default
+        const todayStr = new Date().toLocaleDateString('en-CA'); // 'YYYY-MM-DD'
+        if (dueDateInput) dueDateInput.value = todayStr;
+        const instInput = document.getElementById('installments');
+        if (instInput) instInput.disabled = false;
         modalTitle.innerText = "Adicionar Novo Gasto";
     }
     modal.classList.add('active');
@@ -444,16 +499,37 @@ document.getElementById('expense-form').onsubmit = (e) => {
     const desc = document.getElementById('desc').value;
     const category = document.getElementById('category').value;
     const value = parseFloat(document.getElementById('value').value);
+    const dateInput = document.getElementById('due-date');
+    const date = dateInput ? dateInput.value : new Date().toLocaleDateString('en-CA');
+    const statusInput = document.getElementById('status');
+    const status = statusInput ? statusInput.value : 'pago';
+    const instInput = document.getElementById('installments');
+    const installments = instInput ? (parseInt(instInput.value) || 1) : 1;
     
     if (editingTransactionId) {
         const index = transactions.findIndex(t => t.id === editingTransactionId);
-        transactions[index] = { ...transactions[index], desc, category, value };
+        transactions[index] = { ...transactions[index], desc, category, value, date, status };
     } else {
-        const newId = Date.now(); // ID mais seguro
-        transactions.push({
-            id: newId, desc, category, value,
-            date: new Date().toISOString().split('T')[0], status: 'pago'
-        });
+        const baseId = Date.now();
+        const installmentValue = value / installments;
+        
+        for (let i = 0; i < installments; i++) {
+            // Fuso horário corrigido para pular meses de forma segura
+            const d = new Date(date + "T12:00:00Z");
+            d.setUTCMonth(d.getUTCMonth() + i);
+            const instDate = d.toISOString().split('T')[0];
+            
+            const instDesc = installments > 1 ? `${desc} (${i + 1}/${installments})` : desc;
+            
+            transactions.push({
+                id: baseId + i, 
+                desc: instDesc, 
+                category, 
+                value: installmentValue,
+                date: instDate, 
+                status: (i === 0) ? status : 'pendente' // Apenas a 1ª parcela herda o status escolhido, as demais são pendentes
+            });
+        }
     }
 
     updateUI();

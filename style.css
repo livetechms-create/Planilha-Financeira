@@ -520,6 +520,8 @@ tbody tr:hover {
     width: 100%;
     max-width: 450px;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
 #expense-form {
@@ -529,14 +531,40 @@ tbody tr:hover {
     margin-top: 1.5rem;
 }
 
+#expense-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#expense-form label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
 #expense-form input,
 #expense-form select {
     background: #0f172a;
     border: 1px solid var(--glass-border);
-    padding: 1rem;
+    padding: 0.9rem;
     border-radius: 12px;
     color: white;
     outline: none;
+    width: 100%;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#expense-form input:focus,
+#expense-form select:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(99, 241, 123, 0.2);
+}
+
+#expense-form input:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: #1e293b;
 }
 
 .modal-actions {
