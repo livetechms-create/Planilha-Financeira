@@ -578,6 +578,11 @@ window.onload = () => {
 };
 
 // --- ESTRATÉGIA IA ---
+const btnGenerateAI = document.getElementById('btn-generate-ai');
+const aiResponseContainer = document.getElementById('ai-response-container');
+const aiResponseText = document.getElementById('ai-response-text');
+const aiTypingIndicator = document.getElementById('ai-typing-indicator');
+
 if (btnGenerateAI) {
     btnGenerateAI.addEventListener('click', () => {
         aiResponseContainer.style.display = 'flex';
