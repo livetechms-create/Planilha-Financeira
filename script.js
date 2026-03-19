@@ -705,6 +705,6 @@ if (btnGenerateAI) {
 
             aiResponseText.innerHTML = html;
             lucide.createIcons();
-        }, 3000);
+        }, 1000);
     });
 }
