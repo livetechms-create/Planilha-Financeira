@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agente de Finanças | Dashboard de Gastos Pessoais</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <!-- Ícones e Gráficos -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Widget de Chat IA -->
+    <div class="chat-widget">
+        <div class="chat-panel" id="chat-panel">
+            <div class="chat-header">
+                <div class="chat-header-info">
+                    <i data-lucide="brain"></i>
+                    <div>
+                        <h4 style="font-size: 0.95rem; color: white;">Agente de Finanças GPT</h4>
+                        <p style="font-size: 0.7rem; color: var(--success-color);">Online e pronto para ajudar</p>
+                    </div>
+                </div>
+                <button id="close-chat" class="btn-icon"><i data-lucide="x"></i></button>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <div class="message ai">
+                    Olá! Eu sou o seu Agente de Finanças com IA. Como posso ajudar você hoje? 
+                    <br><br>
+                    Posso analisar seus gastos, dar dicas de economia ou podemos fazer um rápido 
+                    <strong>Questionário de Saúde Financeira</strong>. O que prefere?
+                </div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chat-input" class="chat-input" placeholder="Pergunte algo...">
+                <button id="send-chat" class="btn-send"><i data-lucide="send"></i></button>
+            </div>
+        </div>
+        <button class="chat-button" id="chat-toggle" title="Conversar com a IA">
+            <i data-lucide="message-circle"></i>
+            <span class="chat-fallback" style="display:none">IA</span>
+        </button>
+    </div>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo" style="display: flex; align-items: center; gap: 10px;">
+                <button class="btn-toggle" id="sidebar-toggle" title="Recuar Menu">
+                    <i data-lucide="chevron-left"></i>
+                </button>
+                <img src="logo.jpeg" alt="Logo" style="width: 32px; height: 32px; border-radius: 8px; object-fit: cover;">
+                <div class="logo-content" style="display: flex; flex-direction: column; overflow: hidden;">
+                    <span style="font-size: 1.1rem; font-weight: 700; color: var(--accent-color); white-space: nowrap;">Agente de Finanças</span>
+                    <span style="font-size: 0.65rem; color: var(--text-secondary); white-space: nowrap; font-weight: 400; margin-top: -5px; cursor: pointer; text-decoration: underline; font-family: 'Playfair Display', Georgia, serif; font-style: italic; opacity: 0.8;" onclick="openContactModal()">Desenvolvido por Leandro Henrique Castro</span>
+                </div>
+            </div>
+            <nav id="sidebar-nav">
+                <div class="nav-item active" data-tab="dashboard">
+                    <i data-lucide="layout-dashboard"></i>
+                    <span>Dashboard</span>
+                </div>
+                <div class="nav-item" data-tab="ai-strategy">
+                    <i data-lucide="brain"></i>
+                    <span>Estratégia IA</span>
+                </div>
+                <div class="nav-item" data-tab="vault">
+                    <i data-lucide="piggy-bank"></i>
+                    <span>Meu Cofre</span>
+                </div>
+                <div class="nav-item" data-tab="statement">
+                    <i data-lucide="file-text"></i>
+                    <span>Contas a Pagar</span>
+                </div>
+                <div class="nav-item" data-tab="investments">
+                    <i data-lucide="trending-up"></i>
+                    <span>Investimentos</span>
+                </div>
+                <div class="nav-item" data-tab="settings">
+                    <i data-lucide="settings"></i>
+                    <span>Configurações</span>
+                </div>
+            </nav>
+            <div class="user-profile" id="user-profile-btn" title="Clique para editar seu perfil">
+                <div class="avatar" id="user-avatar">U</div>
+                <div class="user-info">
+                    <p class="name" id="user-display-name">Carregando...</p>
+                    <p class="premium">Membro Premium</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-header">
+                <div class="header-identity" style="display: flex; align-items: center; gap: 15px;">
+                    <img src="logo.jpeg" alt="Logo" style="width: 45px; height: 45px; border-radius: 12px; object-fit: cover; border: 1px solid var(--glass-border);">
+                    <div>
+                        <h1 style="font-size: 1.4rem; font-weight: 700; color: white;">Agente de Finanças</h1>
+                        <p style="font-size: 0.75rem; color: var(--text-secondary); cursor: pointer; text-decoration: underline; font-family: 'Playfair Display', Georgia, serif; font-style: italic; opacity: 0.8;" onclick="openContactModal()">Desenvolvido por Leandro Henrique Castro</p>
+                    </div>
+                </div>
+                <div class="search-bar">
+                    <i data-lucide="search"></i>
+                    <input type="text" placeholder="Pesquisar movimentação...">
+                </div>
+                <div class="header-actions">
+                    <span class="date-picker" id="current-date">Março de 2024</span>
+                    <div class="notification-icon" id="notif-btn">
+                        <i data-lucide="bell"></i>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- ABA DASHBOARD -->
+            <div id="tab-dashboard" class="tab-content active">
+                <section class="overview-cards">
+                    <div class="card balance-card">
+                        <div class="card-header">
+                            <p>Dinheiro Disponível</p>
+                            <i data-lucide="dollar-sign"></i>
+                        </div>
+                        <h2 id="total-income">R$ 5.000,00</h2>
+                        <p class="card-footer text-success"><i data-lucide="arrow-up-right"></i> Gerencie sua renda</p>
+                    </div>
+                    <div class="card expense-card">
+                        <div class="card-header">
+                            <p>Gastos Totais</p>
+                            <i data-lucide="credit-card"></i>
+                        </div>
+                        <h2 id="total-expenses">R$ 0,00</h2>
+                        <p class="card-footer text-danger"><i data-lucide="arrow-down-right"></i> Total do mês</p>
+                    </div>
+                    <div class="card liquid-card">
+                        <div class="card-header">
+                            <p>Saldo Restante</p>
+                            <i data-lucide="piggy-bank"></i>
+                        </div>
+                        <h2 id="remaining-balance">R$ 0,00</h2>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="charts-section">
+                    <div class="chart-container main-chart">
+                        <h3>Visão Geral Diária</h3>
+                        <canvas id="mainFinanceChart"></canvas>
+                    </div>
+                    <div class="chart-container pie-chart">
+                        <h3>Gastos por Categoria</h3>
+                        <canvas id="categoryChart"></canvas>
+                    </div>
+                    <div class="chart-container days-chart">
+                        <h3>Gastos na Semana</h3>
+                        <canvas id="daysOfWeekChart"></canvas>
+                    </div>
+                </section>
+
+                <section class="data-section">
+                    <div class="transaction-list">
+                        <div class="section-header">
+                            <h3>Gastos do Mês</h3>
+                            <button class="btn-add" id="open-modal"><i data-lucide="plus"></i> Novo Gasto</button>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Gasto</th>
+                                    <th>Categoria</th>
+                                    <th>Data</th>
+                                    <th>Valor</th>
+                                    <th>Status</th>
+                                    <th>Ação</th>
+                                </tr>
+                            </thead>
+                            <tbody id="transaction-tbody">
+                                <!-- Injetado via JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+
+            <!-- ABA ESTRATÉGIA IA / CONSULTORIA -->
+            <div id="tab-ai-strategy" class="tab-content">
+                <div class="card glass-card">
+                    <div class="card-header" style="justify-content: flex-start; gap: 10px; border-bottom: 1px solid var(--glass-border); padding-bottom: 1rem; margin-bottom: 1.5rem;">
+                        <i data-lucide="brain" style="color: var(--accent-color); width: 32px; height: 32px;"></i>
+                        <div>
+                            <h3 style="font-size: 1.4rem;">Consultoria Financeira Avançada</h3>
+                            <p style="font-size: 0.85rem; color: var(--text-secondary); font-weight: 400;">O seu planejador de crescimento e mentor rumo à independência financeira.</p>
+                        </div>
+                    </div>
+                    
+                    <button class="btn-add" id="btn-generate-ai" style="margin-bottom: 2rem; width: 100%; justify-content: center; font-size: 1.15rem; padding: 1.2rem; border-radius: 16px; box-shadow: 0 10px 20px -5px rgba(99, 241, 123, 0.3);">
+                        <i data-lucide="sparkles"></i> Gerar Diagnóstico de Crescimento
+                    </button>
+
+                    <div id="ai-response-container" style="display: none; display: flex; flex-direction: column; gap: 2rem;">
+                        <div id="ai-typing-indicator" class="card" style="display: flex; gap: 10px; align-items: center; justify-content: center; color: var(--accent-color); font-weight: 500; min-height: 100px;">
+                            <i data-lucide="loader" class="spin-icon"></i> Analisando salário, despesas, juros e metas futuras...
+                        </div>
+                        <div id="ai-response-text" style="display: contents;">
+                            <!-- Injetado via JS como cards estruturados -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ABA EXTRATO / CONTAS A PAGAR -->
+            <div id="tab-statement" class="tab-content">
+                <section class="data-section">
+                    <div class="transaction-list">
+                        <div class="section-header" style="align-items: flex-start; margin-bottom: 2rem;">
+                            <div>
+                                <h3 style="display: flex; align-items: center; gap: 8px;"><i data-lucide="file-text" style="color: var(--accent-color);"></i> Contas a Pagar (Pendentes)</h3>
+                                <p style="color: var(--text-secondary); margin-top: 5px; font-size: 0.9rem;">Acompanhe todas as suas parcelas e gastos com status pendente.</p>
+                            </div>
+                            <div style="text-align: right;">
+                                <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 5px;">Total Geral Pendente</p>
+                                <h2 style="color: var(--danger-color);" id="total-pending-header">R$ 0,00</h2>
+                            </div>
+                        </div>
+
+                        <!-- Projeção Mensal de Gastos -->
+                        <div style="margin-bottom: 2rem;">
+                            <h4 style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem; display: flex; align-items: center; gap: 8px;">
+                                <i data-lucide="calendar" style="width: 16px;"></i> Projeção de Gastos por Mês
+                            </h4>
+                            <div id="monthly-projection" style="display: flex; gap: 1rem; overflow-x: auto; padding-bottom: 10px; scrollbar-width: thin;">
+                                <!-- Injetado via JS -->
+                            </div>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Gasto</th>
+                                    <th>Categoria</th>
+                                    <th>Vencimento</th>
+                                    <th>Valor</th>
+                                    <th>Status</th>
+                                    <th>Ação</th>
+                                </tr>
+                            </thead>
+                            <tbody id="statement-tbody">
+                                <!-- Injetado via JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+            
+            <!-- ABA MEU COFRE -->
+            <div id="tab-vault" class="tab-content">
+                <div class="card glass-card" style="text-align: center; padding: 2rem;">
+                    <div style="background: rgba(99, 241, 123, 0.1); width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; color: var(--accent-color); border: 2px solid rgba(99, 241, 123, 0.3);">
+                        <i data-lucide="piggy-bank" style="width: 40px; height: 40px;"></i>
+                    </div>
+                    <h2 style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 5px;">Saldo Atual no Cofre</h2>
+                    <h1 id="vault-display" style="font-size: 2.8rem; color: white; margin-bottom: 2rem;">R$ 0,00</h1>
+                    
+                    <!-- Projeções -->
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 2.5rem;">
+                        <div style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: 12px; border: 1px solid var(--glass-border);">
+                            <p style="font-size: 0.7rem; color: var(--text-secondary);">Rendimento (1 mês)</p>
+                            <h5 id="vault-yield-1m" style="font-size: 0.95rem; color: var(--success-color); margin-top: 5px;">+ R$ 0,00</h5>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: 12px; border: 1px solid var(--glass-border);">
+                            <p style="font-size: 0.7rem; color: var(--text-secondary);">Rendimento (6 meses)</p>
+                            <h5 id="vault-yield-6m" style="font-size: 0.95rem; color: var(--success-color); margin-top: 5px;">+ R$ 0,00</h5>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: 12px; border: 1px solid var(--glass-border);">
+                            <p style="font-size: 0.7rem; color: var(--text-secondary);">Rendimento (1 ano)</p>
+                            <h5 id="vault-yield-1y" style="font-size: 0.95rem; color: var(--success-color); margin-top: 5px;">+ R$ 0,00</h5>
+                        </div>
+                    </div>
+
+                    <p style="font-size: 0.75rem; color: var(--text-secondary); margin-top: -1.5rem; margin-bottom: 2rem; display: flex; align-items: center; justify-content: center; gap: 5px;">
+                        <i data-lucide="info" style="width: 14px; height: 14px;"></i>
+                        Simulação baseada em rendimentos de 100% do CDI atual (~10,75% a.a.)
+                    </p>
+
+                    <div style="max-width: 350px; margin: 0 auto; background: rgba(0,0,0,0.2); padding: 1.5rem; border-radius: 20px; border: 1px solid var(--glass-border);">
+                        <label style="display: block; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 15px; text-align: left;">Adicionar ou Retirar Valor</label>
+                        <input type="number" id="vault-input" placeholder="Valor (R$)" step="0.01" style="background: #0f172a; border: 1px solid var(--glass-border); padding: 1rem; border-radius: 12px; color: white; width: 100%; outline: none; font-size: 1rem; margin-bottom: 1rem;">
+                        <div style="display: flex; gap: 10px;">
+                            <button id="add-vault-btn" class="btn-add" style="flex: 1; justify-content: center; height: 50px; border-radius: 12px;">
+                                <i data-lucide="plus"></i> Depositar
+                            </button>
+                            <button id="sub-vault-btn" class="btn-cancel" style="flex: 1; justify-content: center; height: 50px; border-radius: 12px; border-color: #ef4444; color: #ef4444;">
+                                <i data-lucide="minus"></i> Retirar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ABA INVESTIMENTOS (Placeholder Interativo) -->
+            <div id="tab-investments" class="tab-content">
+                <div class="card glass-card">
+                    <h3>Meus Investimentos</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 2rem;">Acompanhe o rendimento do seu patrimônio.</p>
+                    <div class="investment-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div class="card" style="background: rgba(255,255,255,0.02)">
+                            <p>Tesouro Direto</p>
+                            <h4>R$ 12.450,00</h4>
+                            <span class="text-success">+0.8% este mês</span>
+                        </div>
+                        <div class="card" style="background: rgba(255,255,255,0.02)">
+                            <p>Ações (B3)</p>
+                            <h4>R$ 5.200,00</h4>
+                            <span class="text-danger">-1.2% este mês</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ABA CONFIGURAÇÕES -->
+            <div id="tab-settings" class="tab-content">
+                <div class="card glass-card">
+                    <div class="card-header" style="justify-content: flex-start; gap: 10px; border-bottom: 1px solid var(--glass-border); padding-bottom: 1rem; margin-bottom: 1.5rem;">
+                        <i data-lucide="settings" style="color: var(--accent-color); width: 24px; height: 24px;"></i>
+                        <h3 style="font-size: 1.3rem;">Configurações e Metas</h3>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr; gap: 2rem;">
+                        <!-- Card de Referência de Renda -->
+                        <div style="background: rgba(255,255,255,0.03); padding: 1.5rem; border-radius: 16px; border: 1px solid var(--glass-border);">
+                            <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 8px;">Renda Mensal de Referência</p>
+                            <h2 id="settings-income-display" style="color: white; font-size: 1.8rem;">R$ 0,00</h2>
+                            <p style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 5px;">(Alterável no card principal do Dashboard)</p>
+                        </div>
+
+                        <!-- Controle de Meta -->
+                        <div class="setting-item">
+                            <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 1rem;">
+                                <label style="font-weight: 600; color: white;">Meta de Economia Mensal</label>
+                                <div style="text-align: right;">
+                                    <span id="savings-percent-label" style="font-size: 1.2rem; color: var(--accent-color); font-weight: 700;">20%</span>
+                                    <p id="savings-value-label" style="font-size: 0.9rem; color: var(--text-secondary);">R$ 0,00</p>
+                                </div>
+                            </div>
+                            <input type="range" id="savings-range" min="0" max="100" value="20" style="width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 5px; cursor: pointer; accent-color: var(--accent-color);">
+                            <div style="display: flex; justify-content: space-between; margin-top: 8px; font-size: 0.75rem; color: var(--text-secondary);">
+                                <span>0%</span>
+                                <span>50%</span>
+                                <span>100%</span>
+                            </div>
+                        </div>
+
+                        <div class="setting-item">
+                            <label style="font-weight: 600; color: white; display: block; margin-bottom: 10px;">Notificações e Alertas</label>
+                            <div style="display: flex; gap: 1rem;">
+                                <button class="btn-add" style="background: var(--success-color); font-size: 0.85rem; padding: 0.5rem 1rem;">Alertas Ativados</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal para adicionar gasto -->
+    <div class="modal" id="expense-modal">
+        <div class="modal-content">
+            <h3>Adicionar Novo Gasto</h3>
+            <form id="expense-form">
+                <div class="form-group">
+                    <label for="desc">Descrição do Gasto</label>
+                    <input type="text" id="desc" placeholder="Ex: Mercado, Aluguel..." required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="category">Categoria</label>
+                    <select id="category" required>
+                        <option value="Moradia">Moradia</option>
+                        <option value="Alimentação">Alimentação</option>
+                        <option value="Transporte">Transporte</option>
+                        <option value="Lazer">Lazer</option>
+                        <option value="Saúde">Saúde</option>
+                        <option value="Outros">Outros</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="value">Valor (R$)</label>
+                    <input type="number" id="value" placeholder="R$ 0,00" step="0.01" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="bill-type">Comportamento da Cobrança</label>
+                    <select id="bill-type">
+                        <option value="split">Dividir valor nas parcelas (Compra Parcelada)</option>
+                        <option value="recurring">Valor integral todo mês (Mensalidade/Fixa)</option>
+                    </select>
+                </div>
+
+                <div style="display: flex; gap: 15px;">
+                    <div class="form-group" style="flex: 1.5;">
+                        <label for="due-date">Data / 1º Vencimento</label>
+                        <input type="date" id="due-date" required>
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <label for="installments">Nº Parcelas</label>
+                        <input type="number" id="installments" placeholder="Qtd." min="1" value="1" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="status">Status do Pagamento</label>
+                    <select id="status" required>
+                        <option value="pago">Já Pago</option>
+                        <option value="pendente" selected>Aguardando Pagamento</option>
+                    </select>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn-cancel" id="close-modal">Cancelar</button>
+                    <button type="submit" class="btn-submit">Salvar Gasto</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para renomear perfil -->
+    <div class="modal" id="profile-modal">
+        <div class="modal-content">
+            <h3>Editar Perfil</h3>
+            <div style="display: flex; flex-direction: column; gap: 1.2rem; margin-top: 1.5rem;">
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                    <div id="modal-avatar-preview" class="avatar" style="width: 80px; height: 80px; font-size: 2rem; cursor: pointer;" title="Clique para trocar a foto">U</div>
+                    <button type="button" class="btn-cancel" id="trigger-photo-upload" style="font-size: 0.8rem; color: var(--accent-color);">Trocar Foto</button>
+                    <input type="file" id="user-photo-input" accept="image/*" style="display: none;">
+                </div>
+                <input type="text" id="new-user-name" placeholder="Digite seu nome..." style="background: #0f172a; border: 1px solid var(--glass-border); padding: 1rem; border-radius: 12px; color: white;">
+                <div class="modal-actions">
+                    <button type="button" class="btn-cancel" id="close-profile-modal">Cancelar</button>
+                    <button type="button" class="btn-submit" id="save-profile-name">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Painel Lateral de Notificações -->
+    <div class="notification-drawer" id="notification-drawer">
+        <div class="drawer-header">
+            <h3>Notificações</h3>
+            <button id="close-notif" class="btn-icon"><i data-lucide="x"></i></button>
+        </div>
+        <div class="drawer-body" id="notif-content">
+            <!-- Injetado via JS -->
+        </div>
+    </div>
+
+    <!-- Modal de Contato do Desenvolvedor -->
+    <div class="modal" id="contact-modal">
+        <div class="modal-content" style="max-width: 350px; text-align: center;">
+            <div style="background: var(--accent-color); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; color: #000;">
+                <i data-lucide="user" style="width: 30px; height: 30px;"></i>
+            </div>
+            <h3 style="margin-bottom: 5px; color: white;">Leandro Henrique Castro</h3>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 2rem;">Desenvolvedor Full Stack</p>
+            
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <a href="https://wa.me/55067981342154" target="_blank" class="btn-add" style="justify-content: center; background: #25d366; color: white; border: none; text-decoration: none;">
+                    <i data-lucide="message-circle"></i> Conversar no WhatsApp
+                </a>
+                <a href="mailto:leandrinhofilms@gmail.com" class="btn-submit" style="justify-content: center; background: #3b82f6; color: white; border: none; text-decoration: none;">
+                    <i data-lucide="mail"></i> Enviar um E-mail
+                </a>
+            </div>
+            
+            <button class="btn-cancel" onclick="document.getElementById('contact-modal').classList.remove('active')" style="margin-top: 1.5rem; width: 100%;">Fechar</button>
+        </div>
+    </div>
+
+
+
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+        function openContactModal() {
+            document.getElementById('contact-modal').classList.add('active');
+        }
+    </script>
+</body>
+</html>
