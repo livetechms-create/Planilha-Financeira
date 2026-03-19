@@ -37,19 +37,11 @@ function loadFromLocalStorage() {
 }
 
 // Dados Iniciais (Exemplos)
-let incomeValue = 5063.00;
-let transactions = [
-    { id: 1, desc: 'Aluguel & Condomínio', category: 'Moradia', value: 1500.00, date: '2024-03-01', status: 'pago' },
-    { id: 2, desc: 'Compras Supermercado', category: 'Alimentação', value: 850.50, date: '2024-03-05', status: 'pago' },
-    { id: 3, desc: 'Assinatura Netflix', category: 'Lazer', value: 55.90, date: '2024-03-10', status: 'pago' },
-    { id: 4, desc: 'Conta de Luz', category: 'Moradia', value: 220.00, date: '2024-03-12', status: 'pendente' },
-    { id: 5, desc: 'Posto de Gasolina', category: 'Transporte', value: 300.00, date: '2024-03-14', status: 'pago' },
-    { id: 6, desc: 'Farmácia', category: 'Saúde', value: 125.00, date: '2024-03-15', status: 'pago' },
-    { id: 7, desc: 'Restaurante Jantar', category: 'Lazer', value: 198.60, date: '2024-03-18', status: 'pago' }
-];
+let incomeValue = 0.00;
+let transactions = [];
 
 let userData = {
-    name: 'Seu Nome',
+    name: 'Usuário',
     avatar: 'U'
 };
 
