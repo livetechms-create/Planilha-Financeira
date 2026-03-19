@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumina AI | Ultra Resolution Enhancer</title>
+    <meta name="description" content="Aumente a resolução de suas fotos com inteligência artificial avançada diretamente no seu navegador.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- TensorFlow.js and UpscalerJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/upscaler@latest/dist/browser/umd/upscaler.min.js"></script>
+</head>
+<body>
+    <div class="background-glow"></div>
+    
+    <header>
+        <div class="logo">
+            <span class="logo-icon"></span>
+            <h1>Lumina<span>AI</span></h1>
+        </div>
+        <p class="tagline">Transforme baixa qualidade em alta definição</p>
+    </header>
+
+    <main>
+        <section class="upload-container" id="drop-zone">
+            <div class="card glass">
+                <div class="upload-content" id="idle-view">
+                    <div class="settings-panel">
+                        <div class="setting-group">
+                            <label>Escala de Aumento</label>
+                            <div class="toggle-group" id="scale-toggle">
+                                <button class="toggle-btn active" data-scale="2">2X</button>
+                                <button class="toggle-btn" data-scale="3">3X</button>
+                                <button class="toggle-btn" data-scale="4">4X</button>
+                            </div>
+                        </div>
+                        <div class="setting-group">
+                            <label>Modo de Processamento</label>
+                            <select id="model-select" class="glass-select">
+                                <option value="thin">Ultra Rápido (Recomendado)</option>
+                                <option value="regular">Qualidade Máxima (Mais lento)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <input type="file" id="file-input" accept="image/*" hidden>
+                    <button class="btn-primary" id="select-btn">Selecionar Imagem</button>
+                </div>
+
+                <div class="upload-content hidden" id="processing-view">
+                    <div class="loader">
+                        <div class="spinner"></div>
+                        <div class="scanning-line"></div>
+                    </div>
+                    <div class="process-info">
+                        <h3>Processando com IA...</h3>
+                        <p id="progress-text">Iniciando redes neurais...</p>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill" id="progress-bar"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="upload-content hidden" id="result-view">
+                    <div class="comparison-container">
+                        <div class="image-box">
+                            <span>Original</span>
+                            <img id="original-preview" src="" alt="Original">
+                        </div>
+                        <div class="separator"></div>
+                        <div class="image-box">
+                            <span id="upscale-label">Resultado HD</span>
+                            <img id="upscaled-preview" src="" alt="Upscaled">
+                        </div>
+                    </div>
+                    <div class="actions">
+                        <button class="btn-secondary" onclick="resetApp()">Nova Imagem</button>
+                        <a id="download-link" download="lumina-upscaled.png">
+                            <button class="btn-primary">Download Salvar Imagem</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="feature-card glass">
+                <span class="f-icon">⚡</span>
+                <h4>Processamento Local</h4>
+                <p>Suas imagens nunca saem do seu computador. Privacidade total.</p>
+            </div>
+            <div class="feature-card glass">
+                <span class="f-icon">🎯</span>
+                <h4>Super-Resolução</h4>
+                <p>Algoritmos de rede neural que recriam detalhes perdidos.</p>
+            </div>
+            <div class="feature-card glass">
+                <span class="f-icon">💎</span>
+                <h4>Nitidez Extrema</h4>
+                <p>Remove ruído e foca os contornos de forma inteligente.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Lumina AI - Desenvolvido por Leandrinho</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
