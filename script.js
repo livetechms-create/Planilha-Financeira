@@ -423,6 +423,29 @@ function updateUI() {
         totalPendingHeader.innerText = `R$ ${totalPendingValue.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
     }
 
+    // Calcula Totais Mensais para a Aba de Parcelas
+    const monthlyTotals = {};
+    transactions.forEach(t => {
+        if (t.status === 'pendente') {
+            const monthYear = new Date(t.date).toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' });
+            monthlyTotals[monthYear] = (monthlyTotals[monthYear] || 0) + t.value;
+        }
+    });
+
+    const projectionContainer = document.getElementById('monthly-projection');
+    if (projectionContainer) {
+        projectionContainer.innerHTML = '';
+        Object.entries(monthlyTotals).forEach(([month, total]) => {
+            const item = document.createElement('div');
+            item.style.cssText = "background: rgba(255,255,255,0.03); padding: 1rem; border-radius: 12px; border: 1px solid var(--glass-border); min-width: 150px;";
+            item.innerHTML = `
+                <p style="color: var(--text-secondary); font-size: 0.8rem; margin-bottom: 5px;">${month}</p>
+                <h4 style="font-size: 1.1rem; color: #f59e0b;">R$ ${total.toFixed(2)}</h4>
+            `;
+            projectionContainer.appendChild(item);
+        });
+    }
+
     lucide.createIcons();
 
     const remaining = incomeValue - totalSpent;
@@ -503,6 +526,8 @@ document.getElementById('expense-form').onsubmit = (e) => {
     const date = dateInput ? dateInput.value : new Date().toLocaleDateString('en-CA');
     const statusInput = document.getElementById('status');
     const status = statusInput ? statusInput.value : 'pago';
+    const billTypeInput = document.getElementById('bill-type');
+    const billType = billTypeInput ? billTypeInput.value : 'split';
     const instInput = document.getElementById('installments');
     const installments = instInput ? (parseInt(instInput.value) || 1) : 1;
     
@@ -511,7 +536,7 @@ document.getElementById('expense-form').onsubmit = (e) => {
         transactions[index] = { ...transactions[index], desc, category, value, date, status };
     } else {
         const baseId = Date.now();
-        const installmentValue = value / installments;
+        const installmentValue = (billType === 'split') ? (value / installments) : value;
         
         for (let i = 0; i < installments; i++) {
             // Fuso horário corrigido para pular meses de forma segura
