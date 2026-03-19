@@ -17,12 +17,13 @@
     <div class="app-container">
         <!-- Sidebar -->
         <aside class="sidebar">
-            <div class="logo">
+            <div class="logo" style="display: flex; align-items: center; gap: 10px;">
                 <button class="btn-toggle" id="sidebar-toggle" title="Recuar Menu">
                     <i data-lucide="chevron-left"></i>
                 </button>
+                <img src="logo.jpeg" alt="Logo" style="width: 32px; height: 32px; border-radius: 8px; object-fit: cover;">
                 <div class="logo-content" style="display: flex; flex-direction: column;">
-                    <span style="font-size: 1.2rem; font-weight: 700; color: var(--accent-color);">Agente de Finanças</span>
+                    <span style="font-size: 1.1rem; font-weight: 700; color: var(--accent-color);">Agente de Finanças</span>
                     <span style="font-size: 0.6rem; color: var(--text-secondary); white-space: nowrap; font-weight: 400; margin-top: -5px; cursor: pointer; text-decoration: underline;" onclick="openContactModal()">Desenvolvido por Leandro Henrique Castro</span>
                 </div>
             </div>
@@ -64,9 +65,12 @@
         <!-- Main Content -->
         <main class="main-content">
             <header class="top-header">
-                <div class="header-identity">
-                    <h1 style="font-size: 1.4rem; font-weight: 700; color: white;">Agente de Finanças</h1>
-                    <p style="font-size: 0.75rem; color: var(--text-secondary); cursor: pointer; text-decoration: underline;" onclick="openContactModal()">Desenvolvido por Leandro Henrique Castro</p>
+                <div class="header-identity" style="display: flex; align-items: center; gap: 15px;">
+                    <img src="logo.jpeg" alt="Logo" style="width: 45px; height: 45px; border-radius: 12px; object-fit: cover; border: 1px solid var(--glass-border);">
+                    <div>
+                        <h1 style="font-size: 1.4rem; font-weight: 700; color: white;">Agente de Finanças</h1>
+                        <p style="font-size: 0.75rem; color: var(--text-secondary); cursor: pointer; text-decoration: underline;" onclick="openContactModal()">Desenvolvido por Leandro Henrique Castro</p>
+                    </div>
                 </div>
                 <div class="search-bar">
                     <i data-lucide="search"></i>
