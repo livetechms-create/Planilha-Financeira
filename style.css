@@ -73,11 +73,11 @@ body {
     white-space: nowrap;
 }
 
-.logo span {
+.logo-content {
     transition: opacity 0.3s;
 }
 
-.sidebar.collapsed .logo span {
+.sidebar.collapsed .logo-content {
     opacity: 0;
     pointer-events: none;
 }
