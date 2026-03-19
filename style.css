@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,400;1,700&display=swap');
+
 :root {
     --bg-color: #141414;
     --sidebar-bg: #0c0b2e;
@@ -11,7 +13,7 @@
     --border-color: rgba(255, 255, 255, 0.05);
     --glass-border: rgba(255, 255, 255, 0.1);
     
-    --sidebar-width: 260px;
+    --sidebar-width: 280px;
     --sidebar-collapsed-width: 85px;
 }
 
