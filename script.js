@@ -4,7 +4,8 @@ function saveToLocalStorage() {
         const dataToSave = {
             incomeValue: incomeValue,
             transactions: transactions,
-            userData: userData
+            userData: userData,
+            savingsGoalPercent: savingsGoalPercent // Salva a meta
         };
         localStorage.setItem('financeFlowData', JSON.stringify(dataToSave));
     } catch (e) {
@@ -28,6 +29,7 @@ function loadFromLocalStorage() {
                 // Mescla os dados do usuário para não perder campos novos no futuro
                 userData = { ...userData, ...parsed.userData };
             }
+            if (parsed.savingsGoalPercent !== undefined) savingsGoalPercent = parsed.savingsGoalPercent;
             return true;
         }
     } catch (e) {
@@ -47,6 +49,7 @@ let userData = {
 
 // Variáveis de Estado
 let editingTransactionId = null;
+let savingsGoalPercent = 20; // Padrão 20%
 
 // Elementos do DOM
 const tbody = document.getElementById('transaction-tbody');
@@ -461,6 +464,34 @@ function updateUI() {
         ];
         categoryChart.update();
     }
+
+    updateSettingsUI();
+}
+
+// --- CONFIGURAÇÕES ---
+function updateSettingsUI() {
+    const incomeDisplay = document.getElementById('settings-income-display');
+    const percentLabel = document.getElementById('savings-percent-label');
+    const valueLabel = document.getElementById('savings-value-label');
+    const rangeInput = document.getElementById('savings-range');
+
+    if (incomeDisplay) incomeDisplay.innerText = `R$ ${incomeValue.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
+    if (percentLabel) percentLabel.innerText = `${savingsGoalPercent}%`;
+    if (rangeInput) rangeInput.value = savingsGoalPercent;
+
+    if (valueLabel) {
+        const goalValue = (incomeValue * savingsGoalPercent) / 100;
+        valueLabel.innerText = `Equivale a R$ ${goalValue.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
+    }
+}
+
+const savingsRange = document.getElementById('savings-range');
+if (savingsRange) {
+    savingsRange.addEventListener('input', (e) => {
+        savingsGoalPercent = parseInt(e.target.value);
+        updateSettingsUI();
+        saveToLocalStorage();
+    });
 }
 
 // Modal
