@@ -177,17 +177,106 @@ document.getElementById('save-profile-name').onclick = () => {
 const navItems = document.querySelectorAll('.nav-item');
 const tabContents = document.querySelectorAll('.tab-content');
 
+function goToTab(tabId) {
+    navItems.forEach(i => {
+        i.classList.remove('active');
+        if (i.getAttribute('data-tab') === tabId) i.classList.add('active');
+    });
+    tabContents.forEach(tab => {
+        tab.classList.remove('active');
+        if (tab.id === `tab-${tabId}`) tab.classList.add('active');
+    });
+    // Fechar drawers se estiverem abertos
+    if (notifDrawer) notifDrawer.classList.remove('active');
+    if (sidebar.classList.contains('mobile-active')) sidebar.classList.remove('mobile-active');
+}
+
 navItems.forEach(item => {
     item.addEventListener('click', () => {
         const targetTab = item.getAttribute('data-tab');
-        navItems.forEach(i => i.classList.remove('active'));
-        item.classList.add('active');
-        tabContents.forEach(tab => {
-            tab.classList.remove('active');
-            if (tab.id === `tab-${targetTab}`) tab.classList.add('active');
-        });
+        goToTab(targetTab);
     });
 });
+
+// Notificações Dinâmicas
+const notifContent = document.getElementById('notif-content');
+const notifDot = document.querySelector('.notification-icon .dot');
+
+function renderNotifications() {
+    if (!notifContent) return;
+    notifContent.innerHTML = '';
+    let notifications = [];
+
+    // 1. Verificar contas vencendo logo
+    const today = new Date();
+    const threeDaysFromNow = new Date();
+    threeDaysFromNow.setDate(today.getDate() + 3);
+
+    const upcomingBills = transactions.filter(t => 
+        t.status === 'pendente' && 
+        new Date(t.date) <= threeDaysFromNow &&
+        new Date(t.date) >= today
+    );
+
+    upcomingBills.forEach(bill => {
+        notifications.push({
+            title: 'Vencimento Próximo',
+            desc: `Sua conta "${bill.desc}" vence em breve.`,
+            icon: 'alert-triangle',
+            type: 'text-danger',
+            target: 'statement'
+        });
+    });
+
+    // 2. Alerta de Saldo Baixo (menos de 15% da renda)
+    const totalSpent = transactions.reduce((acc, t) => acc + t.value, 0);
+    const balance = incomeValue - totalSpent;
+    if (balance < (incomeValue * 0.15) && incomeValue > 0) {
+        notifications.push({
+            title: 'Saldo Baixo',
+            desc: `Seu saldo está abaixo de 15% da sua renda mensal.`,
+            icon: 'trending-down',
+            type: 'text-danger',
+            target: 'dashboard'
+        });
+    }
+
+    // 3. Meta do Cofre
+    if (vaultValue > 0) {
+        notifications.push({
+            title: 'Cofre Ativo',
+            desc: `Você tem R$ ${vaultValue.toFixed(2)} protegidos no seu cofre.`,
+            icon: 'shield-check',
+            type: 'text-success',
+            target: 'vault'
+        });
+    }
+
+    // 4. Se não houver nada
+    if (notifications.length === 0) {
+        notifContent.innerHTML = '<p style="text-align:center; color: var(--text-secondary); margin-top: 2rem;">Nenhuma notificação nova.</p>';
+        if (notifDot) notifDot.style.display = 'none';
+        return;
+    }
+
+    if (notifDot) notifDot.style.display = 'block';
+
+    notifications.forEach(n => {
+        const div = document.createElement('div');
+        div.className = 'notif-item';
+        div.onclick = () => goToTab(n.target);
+        div.innerHTML = `
+            <i data-lucide="${n.icon}" class="${n.type}"></i>
+            <div>
+                <p>${n.title}</p>
+                <span>${n.desc}</span>
+            </div>
+        `;
+        notifContent.appendChild(div);
+    });
+
+    if (window.lucide) lucide.createIcons();
+}
 
 // Notificações
 const notifDrawer = document.getElementById('notification-drawer');
@@ -196,8 +285,7 @@ const closeNotifBtn = document.getElementById('close-notif');
 document.getElementById('notif-btn').onclick = (e) => {
     e.stopPropagation();
     notifDrawer.classList.add('active');
-    const dot = document.querySelector('.notification-icon .dot');
-    if (dot) dot.style.display = 'none';
+    if (notifDot) notifDot.style.display = 'none';
 };
 
 closeNotifBtn.onclick = () => notifDrawer.classList.remove('active');
@@ -248,12 +336,15 @@ function initCharts() {
     mainChart = new Chart(ctxMain, {
         type: 'bar',
         data: {
-            labels: ['Semana 1', 'Semana 2', 'Semana 3', 'Semana 4'],
+            labels: Array.from({length: 31}, (_, i) => i + 1), // Dias 1-31
             datasets: [{
                 label: 'Gastos (R$)',
-                data: [1200, 950, 1800, 400],
-                backgroundColor: '#6366f1',
-                borderRadius: 8
+                data: new Array(31).fill(0),
+                backgroundColor: [
+                    '#6366f1', '#10b981', '#f59e0b', '#f43f5e', '#8b5cf6', 
+                    '#06b6d4', '#fbbf24', '#ec4899', '#4ade80', '#60a5fa'
+                ],
+                borderRadius: 5
             }]
         },
         options: {
@@ -468,6 +559,30 @@ function updateUI() {
         categoryChart.update();
     }
 
+    // Atualiza Gráfico Diário (mainChart)
+    if (mainChart) {
+        const dailyData = new Array(31).fill(0);
+        transactions.forEach(t => {
+            const day = new Date(t.date).getDate();
+            if (day >= 1 && day <= 31) dailyData[day - 1] += t.value;
+        });
+        mainChart.data.datasets[0].data = dailyData;
+        mainChart.update();
+    }
+
+    // Atualiza Gráfico de Dias da Semana
+    if (daysOfWeekChart) {
+        const weekData = new Array(7).fill(0); // 0=Seg, 1=Ter... 6=Dom
+        transactions.forEach(t => {
+            let day = new Date(t.date).getDay(); // 0=Dom, 1=Seg...
+            day = (day === 0) ? 6 : day - 1; // Ajusta para 0=Seg, 6=Dom
+            weekData[day] += t.value;
+        });
+        daysOfWeekChart.data.datasets[0].data = weekData;
+        daysOfWeekChart.update();
+    }
+
+    renderNotifications();
     updateSettingsUI();
     updateVaultUI();
 }
@@ -811,3 +926,124 @@ if (btnGenerateAI) {
         }, 1000);
     });
 }
+
+// --- LÓGICA DO CHAT DE IA ---
+const chatToggle = document.getElementById('chat-toggle');
+const chatPanel = document.getElementById('chat-panel');
+const closeChat = document.getElementById('close-chat');
+const chatInput = document.getElementById('chat-input');
+const sendChat = document.getElementById('send-chat');
+const chatMessages = document.getElementById('chat-messages');
+
+if (chatToggle) {
+    chatToggle.onclick = () => chatPanel.classList.toggle('active');
+}
+
+if (closeChat) {
+    closeChat.onclick = () => chatPanel.classList.remove('active');
+}
+
+function addMessage(text, type = 'ai') {
+    const msgDiv = document.createElement('div');
+    msgDiv.className = `message ${type}`;
+    msgDiv.innerHTML = text;
+    chatMessages.appendChild(msgDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+// Respostas Inteligentes Simuladas
+function getAIResponse(userMsg) {
+    const msg = userMsg.toLowerCase();
+    
+    // Dados para contexto
+    const totalSpent = transactions.reduce((acc, t) => acc + t.value, 0);
+    const balance = incomeValue - totalSpent;
+
+    if (msg.includes('questionário') || msg.includes('quiz') || msg.includes('pergunta')) {
+        startQuiz();
+        return null;
+    }
+
+    if (msg.includes('saldo') || msg.includes('quanto tenho')) {
+        return `Seu saldo disponível no momento é de **R$ ${balance.toLocaleString('pt-BR', {minimumFractionDigits: 2})}**.`;
+    }
+
+    if (msg.includes('gasto') || msg.includes('despesa')) {
+        return `Você já gastou um total de **R$ ${totalSpent.toLocaleString('pt-BR', {minimumFractionDigits: 2})}** este mês.`;
+    }
+
+    if (msg.includes('dica') || msg.includes('ajuda')) {
+        return "Uma dica rápida: Tente a regra do 50-30-20. 50% para necessidades, 30% para desejos e 20% para poupança/investimentos. Como está sua reserva hoje?";
+    }
+
+    if (msg.includes('oi') || msg.includes('olá')) {
+        return `Olá ${userData.name}! Como posso ajudar nas suas finanças hoje?`;
+    }
+
+    return "Interessante! Posso analisar isso para você. Quer que eu verifique seu histórico de gastos ou prefere fazer o nosso questionário de saúde financeira?";
+}
+
+function handleChatSubmit() {
+    const text = chatInput.value.trim();
+    if (text) {
+        addMessage(text, 'user');
+        chatInput.value = '';
+        
+        setTimeout(() => {
+            const response = getAIResponse(text);
+            if (response) addMessage(response, 'ai');
+        }, 600);
+    }
+}
+
+if (sendChat) sendChat.onclick = handleChatSubmit;
+if (chatInput) {
+    chatInput.onkeypress = (e) => {
+        if (e.key === 'Enter') handleChatSubmit();
+    };
+}
+
+// SISTEMA DE QUESTIONÁRIO
+let quizStep = 0;
+const quizQuestions = [
+    {
+        q: "Qual é o seu principal objetivo financeiro hoje?",
+        options: ["Sair das dívidas", "Criar reserva de emergência", "Começar a investir", "Comprar um bem (casa/carro)"]
+    },
+    {
+        q: "Quanto do seu salário você consegue guardar por mês?",
+        options: ["Nada", "Até 10%", "Entre 10% e 30%", "Mais de 30%"]
+    },
+    {
+        q: "Como você se sente em relação ao seu futuro financeiro?",
+        options: ["Preocupado", "Inseguro", "Confiante", "Totalmente preparado"]
+    }
+];
+
+function startQuiz() {
+    quizStep = 0;
+    addMessage("Ótimo! Vamos começar o questionário para eu te conhecer melhor. 📝", 'ai');
+    showQuizStep();
+}
+
+function showQuizStep() {
+    if (quizStep < quizQuestions.length) {
+        const step = quizQuestions[quizStep];
+        let html = `<strong>${step.q}</strong><br>`;
+        step.options.forEach((opt, idx) => {
+            html += `<button class="quiz-option" onclick="answerQuiz('${opt}')">${opt}</button>`;
+        });
+        addMessage(html, 'ai');
+    } else {
+        const first = userData.name.split(' ')[0];
+        addMessage(`Obrigado por responder, ${first}! Analisando suas respostas, recomendo que você foque primeiro em **${quizStep === 3 ? 'diversificar seus investimentos' : 'fortalecer sua base de gastos'}**. Quer ver um plano detalhado na aba "Estratégia IA"?`, 'ai');
+        quizStep = 0;
+    }
+}
+
+window.answerQuiz = (answer) => {
+    addMessage(answer, 'user');
+    quizStep++;
+    setTimeout(showQuizStep, 800);
+};
+

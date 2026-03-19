@@ -14,6 +14,37 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+    <!-- Widget de Chat IA -->
+    <div class="chat-widget">
+        <div class="chat-panel" id="chat-panel">
+            <div class="chat-header">
+                <div class="chat-header-info">
+                    <i data-lucide="brain"></i>
+                    <div>
+                        <h4 style="font-size: 0.95rem; color: white;">Agente de Finanças GPT</h4>
+                        <p style="font-size: 0.7rem; color: var(--success-color);">Online e pronto para ajudar</p>
+                    </div>
+                </div>
+                <button id="close-chat" class="btn-icon"><i data-lucide="x"></i></button>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <div class="message ai">
+                    Olá! Eu sou o seu Agente de Finanças com IA. Como posso ajudar você hoje? 
+                    <br><br>
+                    Posso analisar seus gastos, dar dicas de economia ou podemos fazer um rápido 
+                    <strong>Questionário de Saúde Financeira</strong>. O que prefere?
+                </div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chat-input" class="chat-input" placeholder="Pergunte algo...">
+                <button id="send-chat" class="btn-send"><i data-lucide="send"></i></button>
+            </div>
+        </div>
+        <button class="chat-button" id="chat-toggle" title="Conversar com a IA">
+            <i data-lucide="message-circle"></i>
+            <span class="chat-fallback" style="display:none">IA</span>
+        </button>
+    </div>
     <div class="app-container">
         <!-- Sidebar -->
         <aside class="sidebar">
@@ -424,20 +455,6 @@
         </div>
         <div class="drawer-body" id="notif-content">
             <!-- Injetado via JS -->
-            <div class="notif-item">
-                <i data-lucide="info" class="text-success"></i>
-                <div>
-                    <p>Saldo Atualizado</p>
-                    <span>Sua renda foi registrada com sucesso.</span>
-                </div>
-            </div>
-            <div class="notif-item">
-                <i data-lucide="alert-triangle" class="text-danger"></i>
-                <div>
-                    <p>Vencimento Próximo</p>
-                    <span>Sua conta de Luz vence em 2 dias.</span>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -462,6 +479,8 @@
             <button class="btn-cancel" onclick="document.getElementById('contact-modal').classList.remove('active')" style="margin-top: 1.5rem; width: 100%;">Fechar</button>
         </div>
     </div>
+
+
 
     <script src="script.js"></script>
     <script>
