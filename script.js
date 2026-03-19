@@ -578,111 +578,133 @@ window.onload = () => {
 };
 
 // --- ESTRATÉGIA IA ---
-const btnGenerateAI = document.getElementById('btn-generate-ai');
-const aiResponseContainer = document.getElementById('ai-response-container');
-const aiResponseText = document.getElementById('ai-response-text');
-const aiTypingIndicator = document.getElementById('ai-typing-indicator');
-
 if (btnGenerateAI) {
     btnGenerateAI.addEventListener('click', () => {
-        // Mostra o container resetado e o loader animado
-        aiResponseContainer.style.display = 'block';
+        aiResponseContainer.style.display = 'flex';
         aiResponseText.innerHTML = '';
         aiTypingIndicator.style.display = 'flex';
-        
-        // Bloqueia o botão durante a "análise"
         btnGenerateAI.disabled = true;
         btnGenerateAI.style.opacity = '0.6';
-        btnGenerateAI.innerHTML = `<i data-lucide="loader" class="spin-icon"></i> Analisando Dados...`;
+        btnGenerateAI.innerHTML = `<i data-lucide="loader" class="spin-icon"></i> Processando Consultoria...`;
         lucide.createIcons();
 
-        // Faz uma simulação básica de lógica baseada nos dados do usuário
-        let totalExpenses = transactions.reduce((acc, t) => acc + t.value, 0);
-        let pendingTransactions = transactions.filter(t => t.status === 'pendente');
-        let pendingExpenses = pendingTransactions.reduce((acc, t) => acc + t.value, 0);
-        
-        let catTotals = {};
-        transactions.forEach(t => {
-            catTotals[t.category] = (catTotals[t.category] || 0) + t.value;
-        });
-        
-        let mostExpensiveCat = '';
-        if (Object.keys(catTotals).length > 0) {
-            mostExpensiveCat = Object.keys(catTotals).reduce((a, b) => catTotals[a] > catTotals[b] ? a : b);
-        }
+        // --- CÁLCULOS TÉCNICOS ---
+        const totalExpenses = transactions.reduce((acc, t) => acc + t.value, 0);
+        const pendingTransactions = transactions.filter(t => t.status === 'pendente');
+        const pendingSum = pendingTransactions.reduce((acc, t) => acc + t.value, 0);
+        const paidSum = transactions.filter(t => t.status === 'pago').reduce((acc, t) => acc + t.value, 0);
+        const balance = incomeValue - totalExpenses;
+        const savingsRate = (balance > 0) ? (balance / incomeValue) * 100 : 0;
 
-        // Simula tempo de rede/processamento IA (2.5s)
+        // Categorias e Gastos Desnecessários (Ex: Lazer > 20% da renda)
+        const catTotals = {};
+        transactions.forEach(t => catTotals[t.category] = (catTotals[t.category] || 0) + t.value);
+        const leisureSpending = catTotals['Lazer'] || 0;
+        const isLeisureHigh = leisureSpending > (incomeValue * 0.15);
+
+        // Simulação de Juros de Dívida (Atraso médio 10% am no Brasil para cartões/cheque especial)
+        const estimatedInterest = pendingSum * 0.107; 
+
         setTimeout(() => {
             aiTypingIndicator.style.display = 'none';
             btnGenerateAI.disabled = false;
             btnGenerateAI.style.opacity = '1';
-            btnGenerateAI.innerHTML = `<i data-lucide="sparkles"></i> Gerar Nova Estratégia`;
+            btnGenerateAI.innerHTML = `<i data-lucide="sparkles"></i> Gerar Novo Diagnóstico`;
 
-            const userName = userData.name.split(' ')[0];
-            let responseHTML = `
-                <div style="margin-bottom: 20px; font-size: 1.1rem;">
-                    Olá, <strong>${userName}</strong>! Analisei suas finanças deste mês.
-                    Aqui está um resumo inteligente e minha recomendação de estratégia:
+            const first = userData.name.split(' ')[0];
+            
+            // CONSTRUÇÃO DO DASHBOARD DE CONSULTORIA
+            let html = `
+                <!-- CARD 1: DIAGNÓSTICO DE SAÚDE -->
+                <div class="card" style="background: rgba(15, 23, 42, 0.8); border: 1px solid var(--glass-border); padding: 1.5rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem;">
+                        <div>
+                            <h4 style="color: var(--accent-color); font-size: 1.1rem; margin-bottom: 5px;">Diagnóstico de Saúde Atual</h4>
+                            <p style="color: var(--text-secondary); font-size: 0.85rem;">Análise baseada no seu salário de R$ ${incomeValue.toFixed(2)}</p>
+                        </div>
+                        <span style="padding: 5px 12px; border-radius: 20px; font-size: 0.75rem; background: ${balance > 0 ? 'rgba(16, 185, 129, 0.1)' : 'rgba(244, 63, 94, 0.1)'}; color: ${balance > 0 ? 'var(--success-color)' : 'var(--danger-color)'}; border: 1px solid currentColor;">
+                            ${balance > 0 ? 'Perfil Superavitário' : 'Perfil Deficitário'}
+                        </span>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+                        <div style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: 12px;">
+                            <p style="font-size: 0.75rem; color: var(--text-secondary);">Taxa de Poupança</p>
+                            <h5 style="font-size: 1.1rem; color: ${savingsRate >= 20 ? 'var(--success-color)' : '#f59e0b'}">${savingsRate.toFixed(1)}%</h5>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: 12px;">
+                            <p style="font-size: 0.75rem; color: var(--text-secondary);">Risco de Juros (Est.)</p>
+                            <h5 style="font-size: 1.1rem; color: var(--danger-color);">R$ ${estimatedInterest.toFixed(2)}</h5>
+                        </div>
+                    </div>
+
+                    <div style="border-top: 1px solid var(--glass-border); padding-top: 1rem;">
+                        <h5 style="font-size: 0.9rem; margin-bottom: 10px; color: white;">Identificação de Gastos Desnecessários:</h5>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">
+                            ${isLeisureHigh ? `⚠️ <strong>Alerta de Lazer:</strong> Seus gastos com entretenimento (R$ ${leisureSpending.toFixed(2)}) estão consumindo ${((leisureSpending/incomeValue)*100).toFixed(1)}% da sua renda. Reduzir 30% desse valor liberaria R$ ${(leisureSpending*0.3).toFixed(2)} mensais para sua liberdade.` : `✅ Seus gastos fixos e variáveis estão equilibrados dentro das categorias principais.`}
+                        </p>
+                    </div>
+                </div>
+
+                <!-- CARD 2: ESTRATÉGIA PARA DÍVIDAS -->
+                <div class="card" style="background: rgba(15, 23, 42, 0.8); border: 1px solid var(--glass-border); padding: 1.5rem;">
+                    <h4 style="color: #f43f5e; font-size: 1.1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px;">
+                        <i data-lucide="shield-alert" style="width: 20px;"></i> Estratégia de Quitação
+                    </h4>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
+                        <div style="background: rgba(244, 63, 94, 0.05); border-left: 4px solid #f43f5e; padding: 1rem; border-radius: 0 8px 8px 0;">
+                            <strong>Método Avalanche (Recomendado):</strong> Foque todo o seu saldo restante (R$ ${Math.max(0, balance).toFixed(2)}) no pagamento da dívida de maior valor ou juros primeiro. 
+                            Atualmente, priorize: <strong>"${pendingTransactions.length > 0 ? pendingTransactions.sort((a,b) => b.value - a.value)[0].desc : 'Nenhuma'}"</strong>.
+                        </div>
+                        <p><strong>Dica Extra:</strong> Tente renegociar dívidas que ultrapassam 3 meses. Bancos costumam aceitar descontos de até 60% para liquidação à vista com dinheiro poupado.</p>
+                    </div>
+                </div>
+
+                <!-- CARD 3: PLANEJADOR DE CRESCIMENTO E METAS -->
+                <div class="card" style="background: rgba(15, 23, 42, 0.8); border: 1px solid var(--glass-border); padding: 1.5rem;">
+                    <h4 style="color: #fbbf24; font-size: 1.1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px;">
+                        <i data-lucide="trending-up" style="width: 20px;"></i> Plano de Independência Financeira
+                    </h4>
+
+                    <div style="display: flex; flex-direction: column; gap: 1.2rem;">
+                        <div style="display: flex; gap: 10px; align-items: flex-start;">
+                            <span style="background: var(--accent-color); color: #000; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 800; flex-shrink: 0;">1</span>
+                            <div>
+                                <h5 style="color: white; font-size: 0.9rem; margin-bottom: 4px;">Curto Prazo: Reserva de Emergência</h5>
+                                <p style="font-size: 0.8rem; color: var(--text-secondary);">Sua meta é acumular 6 meses de gastos (R$ ${(totalExpenses * 6).toFixed(2)}). Guardando 10% do seu salário, você leva cerca de 60 meses, mas se economizar no lazer, reduz para 36 meses.</p>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; gap: 10px; align-items: flex-start;">
+                            <span style="background: var(--accent-color); color: #000; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 800; flex-shrink: 0;">2</span>
+                            <div>
+                                <h5 style="color: white; font-size: 0.9rem; margin-bottom: 4px;">Médio Prazo: Investimentos em Renda Fixa</h5>
+                                <p style="font-size: 0.8rem; color: var(--text-secondary);">Com seu perfil atual, o ideal é alocar em **Tesouro IPCA+** ou **CDBs de 110% do CDI**. Isso protegerá seu dinheiro da inflação.</p>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; gap: 10px; align-items: flex-start;">
+                            <span style="background: var(--accent-color); color: #000; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 800; flex-shrink: 0;">3</span>
+                            <div>
+                                <h5 style="color: white; font-size: 0.9rem; margin-bottom: 4px;">Longo Prazo: Renda Passiva</h5>
+                                <p style="font-size: 0.8rem; color: var(--text-secondary);">Para se aposentar com uma renda igual ao seu salário atual (R$ ${incomeValue.toFixed(2)}), você precisa de um patrimônio de aprox. **R$ ${(incomeValue * 150).toFixed(0)}**. Comece com R$ ${(incomeValue * 0.1).toFixed(2)} mensais hoje em Fundos Imobiliários.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 4: MENTALIDADE FINANCEIRA -->
+                <div class="card" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(16, 185, 129, 0.1)); border: 1px solid var(--accent-color); padding: 1.5rem;">
+                    <h4 style="color: white; font-size: 1rem; margin-bottom: 10px;">Treinamento de Mentalidade</h4>
+                    <p style="font-size: 0.85rem; color: var(--text-primary); line-height: 1.6; font-style: italic;">
+                        "${first}, lembre-se: Dinheiro não é sobre quanto você ganha, mas sobre quanto você mantém. O seu eu do futuro agradecerá por cada R$ 1,00 que você decidir não gastar por impulso hoje."
+                    </p>
                 </div>
             `;
 
-            responseHTML += `<div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
-                <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 12px; flex: 1; border: 1px solid var(--glass-border);">
-                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 5px;">Total Gasto</p>
-                    <h4 style="font-size: 1.3rem; color: var(--danger-color);">R$ ${totalExpenses.toFixed(2)}</h4>
-                </div>
-                <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 12px; flex: 1; border: 1px solid var(--glass-border);">
-                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 5px;">Contas Pendentes</p>
-                    <h4 style="font-size: 1.3rem; color: #f59e0b;">R$ ${pendingExpenses.toFixed(2)}</h4>
-                </div>
-            </div>`;
-
-            responseHTML += `<h4 style="color: var(--accent-color); margin-bottom: 1rem; display: flex; align-items: center; gap: 8px;">
-                <i data-lucide="lightbulb" style="width: 20px;"></i> Estratégia e Recomendações
-            </h4>`;
-            
-            responseHTML += `<ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 10px; color: var(--text-secondary);">`;
-
-            // Condicional 1: Contas Pendentes
-            if (pendingExpenses > 0) {
-                responseHTML += `<li>
-                    <strong style="color: #f8fafc;">Atenção com Pendências:</strong> Você tem <strong>R$ ${pendingExpenses.toFixed(2)}</strong> em contas não pagas. 
-                    Sugiro que priorize o pagamento da conta de <em>"${pendingTransactions[0].desc}"</em> para evitar juros.
-                </li>`;
-            } else {
-                responseHTML += `<li><strong style="color: var(--success-color);">Excelente!</strong> Você não tem contas pendentes no momento. Continue assim para evitar juros.</li>`;
-            }
-
-            // Condicional 2: Maior Categoria de Gastos
-            if (mostExpensiveCat) {
-                responseHTML += `<li>
-                    <strong style="color: #f8fafc;">Foco em Redução:</strong> Sua maior despesa no momento é na categoria <span class="category-tag">${mostExpensiveCat}</span> (R$ ${catTotals[mostExpensiveCat].toFixed(2)}). 
-                    ${mostExpensiveCat === 'Lazer' ? 'Tente programar saídas gratuitas ou reduzir pedidos de delivery neste fim de semana.' : 'Analise se há como economizar ou renegociar faturas relacionadas.'}
-                </li>`;
-            }
-
-            // Condicional 3: Saúde Financeira e Saldo Restante
-            let balance = incomeValue - totalExpenses;
-            if (balance > incomeValue * 0.2) {
-                responseHTML += `<li>
-                    <strong style="color: var(--success-color);">Sobrou Dinheiro!</strong> Você ainda tem R$ ${balance.toFixed(2)} disponíveis. 
-                    Recomendo <strong>investir 20% do que sobrou</strong> na sua aba de Investimentos ou fortalecer sua Reserva de Emergência antes do mês fechar.
-                </li>`;
-            } else if (balance > 0) {
-                responseHTML += `<li>
-                    <strong style="color: #f59e0b;">Alerta Amarelo:</strong> Seu orçamento está chegando no limite. Faltam R$ ${balance.toFixed(2)} para acabar sua renda disponível. Evite cartões de crédito nessa reta final.
-                </li>`;
-            } else {
-                responseHTML += `<li>
-                    <strong style="color: var(--danger-color);">Alerta Vermelho!</strong> Seus gastos (R$ ${totalExpenses.toFixed(2)}) ultrapassaram seu dinheiro disponível (R$ ${incomeValue.toFixed(2)}).
-                    Pare imediatamente gastos superférfluos e avalie possíveis cortes no próximo mês para se estabilizar.
-                </li>`;
-            }
-
-            responseHTML += `</ul>`;
-
-            aiResponseText.innerHTML = responseHTML;
-            lucide.createIcons(); // Recria os ícones injetados
-        }, 2500);
+            aiResponseText.innerHTML = html;
+            lucide.createIcons();
+        }, 3000);
     });
 }

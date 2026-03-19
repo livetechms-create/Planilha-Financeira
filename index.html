@@ -23,7 +23,7 @@
                 </button>
                 <div class="logo-content" style="display: flex; flex-direction: column;">
                     <span style="font-size: 1.2rem; font-weight: 700; color: var(--accent-color);">Agente de Finanças</span>
-                    <span style="font-size: 0.6rem; color: var(--text-secondary); white-space: nowrap; font-weight: 400; margin-top: -5px;">Desenvolvido por Leandro Henrique Castro</span>
+                    <span style="font-size: 0.6rem; color: var(--text-secondary); white-space: nowrap; font-weight: 400; margin-top: -5px; cursor: pointer; text-decoration: underline;" onclick="openContactModal()">Desenvolvido por Leandro Henrique Castro</span>
                 </div>
             </div>
             <nav id="sidebar-nav">
@@ -62,7 +62,7 @@
             <header class="top-header">
                 <div class="header-identity">
                     <h1 style="font-size: 1.4rem; font-weight: 700; color: white;">Agente de Finanças</h1>
-                    <p style="font-size: 0.75rem; color: var(--text-secondary);">Desenvolvido por Leandro Henrique Castro</p>
+                    <p style="font-size: 0.75rem; color: var(--text-secondary); cursor: pointer; text-decoration: underline;" onclick="openContactModal()">Desenvolvido por Leandro Henrique Castro</p>
                 </div>
                 <div class="search-bar">
                     <i data-lucide="search"></i>
@@ -148,24 +148,28 @@
                 </section>
             </div>
 
-            <!-- ABA ESTRATÉGIA IA -->
+            <!-- ABA ESTRATÉGIA IA / CONSULTORIA -->
             <div id="tab-ai-strategy" class="tab-content">
                 <div class="card glass-card">
                     <div class="card-header" style="justify-content: flex-start; gap: 10px; border-bottom: 1px solid var(--glass-border); padding-bottom: 1rem; margin-bottom: 1.5rem;">
-                        <i data-lucide="brain" style="color: var(--accent-color); width: 28px; height: 28px;"></i>
-                        <h3 style="font-size: 1.3rem;">Estratégia Inteligente de Pagamentos</h3>
+                        <i data-lucide="brain" style="color: var(--accent-color); width: 32px; height: 32px;"></i>
+                        <div>
+                            <h3 style="font-size: 1.4rem;">Consultoria Financeira Avançada</h3>
+                            <p style="font-size: 0.85rem; color: var(--text-secondary); font-weight: 400;">O seu planejador de crescimento e mentor rumo à independência financeira.</p>
+                        </div>
                     </div>
-                    <p style="color: var(--text-secondary); margin-bottom: 2rem;">A Inteligência Artificial analisa seus gastos do mês e sugere a melhor forma de organizar seus pagamentos e otimizar seu saldo atual.</p>
                     
-                    <button class="btn-add" id="btn-generate-ai" style="margin-bottom: 2rem; width: 100%; justify-content: center; font-size: 1.1rem; padding: 1rem; border-radius: 12px;">
-                        <i data-lucide="sparkles"></i> Analisar e Gerar Estratégia
+                    <button class="btn-add" id="btn-generate-ai" style="margin-bottom: 2rem; width: 100%; justify-content: center; font-size: 1.15rem; padding: 1.2rem; border-radius: 16px; box-shadow: 0 10px 20px -5px rgba(99, 241, 123, 0.3);">
+                        <i data-lucide="sparkles"></i> Gerar Diagnóstico de Crescimento
                     </button>
 
-                    <div id="ai-response-container" class="card" style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--glass-border); display: none; min-height: 150px; padding: 2rem; border-radius: 16px;">
-                        <div id="ai-typing-indicator" style="display: flex; gap: 10px; align-items: center; justify-content: center; color: var(--accent-color); font-weight: 500;">
-                            <i data-lucide="loader" class="spin-icon"></i> Analisando suas finanças...
+                    <div id="ai-response-container" style="display: none; display: flex; flex-direction: column; gap: 2rem;">
+                        <div id="ai-typing-indicator" class="card" style="display: flex; gap: 10px; align-items: center; justify-content: center; color: var(--accent-color); font-weight: 500; min-height: 100px;">
+                            <i data-lucide="loader" class="spin-icon"></i> Analisando salário, despesas, juros e metas futuras...
                         </div>
-                        <div id="ai-response-text" style="line-height: 1.8; color: var(--text-primary); font-size: 1rem;"></div>
+                        <div id="ai-response-text" style="display: contents;">
+                            <!-- Injetado via JS como cards estruturados -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -360,9 +364,34 @@
         </div>
     </div>
 
+    <!-- Modal de Contato do Desenvolvedor -->
+    <div class="modal" id="contact-modal">
+        <div class="modal-content" style="max-width: 350px; text-align: center;">
+            <div style="background: var(--accent-color); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; color: #000;">
+                <i data-lucide="user" style="width: 30px; height: 30px;"></i>
+            </div>
+            <h3 style="margin-bottom: 5px; color: white;">Leandro Henrique Castro</h3>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 2rem;">Desenvolvedor Full Stack</p>
+            
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <a href="https://wa.me/55067981342154" target="_blank" class="btn-add" style="justify-content: center; background: #25d366; color: white; border: none; text-decoration: none;">
+                    <i data-lucide="message-circle"></i> Conversar no WhatsApp
+                </a>
+                <a href="mailto:leandrinhofilms@gmail.com" class="btn-submit" style="justify-content: center; background: #3b82f6; color: white; border: none; text-decoration: none;">
+                    <i data-lucide="mail"></i> Enviar um E-mail
+                </a>
+            </div>
+            
+            <button class="btn-cancel" onclick="document.getElementById('contact-modal').classList.remove('active')" style="margin-top: 1.5rem; width: 100%;">Fechar</button>
+        </div>
+    </div>
+
     <script src="script.js"></script>
     <script>
         lucide.createIcons();
+        function openContactModal() {
+            document.getElementById('contact-modal').classList.add('active');
+        }
     </script>
 </body>
 </html>
