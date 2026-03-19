@@ -28,6 +28,10 @@
                     <i data-lucide="layout-dashboard"></i>
                     <span>Dashboard</span>
                 </div>
+                <div class="nav-item" data-tab="ai-strategy">
+                    <i data-lucide="brain"></i>
+                    <span>Estratégia IA</span>
+                </div>
                 <div class="nav-item" data-tab="investments">
                     <i data-lucide="trending-up"></i>
                     <span>Investimentos</span>
@@ -131,6 +135,28 @@
                         </table>
                     </div>
                 </section>
+            </div>
+
+            <!-- ABA ESTRATÉGIA IA -->
+            <div id="tab-ai-strategy" class="tab-content">
+                <div class="card glass-card">
+                    <div class="card-header" style="justify-content: flex-start; gap: 10px; border-bottom: 1px solid var(--glass-border); padding-bottom: 1rem; margin-bottom: 1.5rem;">
+                        <i data-lucide="brain" style="color: var(--accent-color); width: 28px; height: 28px;"></i>
+                        <h3 style="font-size: 1.3rem;">Estratégia Inteligente de Pagamentos</h3>
+                    </div>
+                    <p style="color: var(--text-secondary); margin-bottom: 2rem;">A Inteligência Artificial analisa seus gastos do mês e sugere a melhor forma de organizar seus pagamentos e otimizar seu saldo atual.</p>
+                    
+                    <button class="btn-add" id="btn-generate-ai" style="margin-bottom: 2rem; width: 100%; justify-content: center; font-size: 1.1rem; padding: 1rem; border-radius: 12px;">
+                        <i data-lucide="sparkles"></i> Analisar e Gerar Estratégia
+                    </button>
+
+                    <div id="ai-response-container" class="card" style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--glass-border); display: none; min-height: 150px; padding: 2rem; border-radius: 16px;">
+                        <div id="ai-typing-indicator" style="display: flex; gap: 10px; align-items: center; justify-content: center; color: var(--accent-color); font-weight: 500;">
+                            <i data-lucide="loader" class="spin-icon"></i> Analisando suas finanças...
+                        </div>
+                        <div id="ai-response-text" style="line-height: 1.8; color: var(--text-primary); font-size: 1rem;"></div>
+                    </div>
+                </div>
             </div>
 
             <!-- ABA INVESTIMENTOS (Placeholder Interativo) -->

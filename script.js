@@ -475,3 +475,113 @@ window.onload = () => {
     const year = date.getFullYear();
     document.getElementById('current-date').innerText = `${month.charAt(0).toUpperCase() + month.slice(1)} de ${year}`;
 };
+
+// --- ESTRATÉGIA IA ---
+const btnGenerateAI = document.getElementById('btn-generate-ai');
+const aiResponseContainer = document.getElementById('ai-response-container');
+const aiResponseText = document.getElementById('ai-response-text');
+const aiTypingIndicator = document.getElementById('ai-typing-indicator');
+
+if (btnGenerateAI) {
+    btnGenerateAI.addEventListener('click', () => {
+        // Mostra o container resetado e o loader animado
+        aiResponseContainer.style.display = 'block';
+        aiResponseText.innerHTML = '';
+        aiTypingIndicator.style.display = 'flex';
+        
+        // Bloqueia o botão durante a "análise"
+        btnGenerateAI.disabled = true;
+        btnGenerateAI.style.opacity = '0.6';
+        btnGenerateAI.innerHTML = `<i data-lucide="loader" class="spin-icon"></i> Analisando Dados...`;
+        lucide.createIcons();
+
+        // Faz uma simulação básica de lógica baseada nos dados do usuário
+        let totalExpenses = transactions.reduce((acc, t) => acc + t.value, 0);
+        let pendingTransactions = transactions.filter(t => t.status === 'pendente');
+        let pendingExpenses = pendingTransactions.reduce((acc, t) => acc + t.value, 0);
+        
+        let catTotals = {};
+        transactions.forEach(t => {
+            catTotals[t.category] = (catTotals[t.category] || 0) + t.value;
+        });
+        
+        let mostExpensiveCat = '';
+        if (Object.keys(catTotals).length > 0) {
+            mostExpensiveCat = Object.keys(catTotals).reduce((a, b) => catTotals[a] > catTotals[b] ? a : b);
+        }
+
+        // Simula tempo de rede/processamento IA (2.5s)
+        setTimeout(() => {
+            aiTypingIndicator.style.display = 'none';
+            btnGenerateAI.disabled = false;
+            btnGenerateAI.style.opacity = '1';
+            btnGenerateAI.innerHTML = `<i data-lucide="sparkles"></i> Gerar Nova Estratégia`;
+
+            const userName = userData.name.split(' ')[0];
+            let responseHTML = `
+                <div style="margin-bottom: 20px; font-size: 1.1rem;">
+                    Olá, <strong>${userName}</strong>! Analisei suas finanças deste mês.
+                    Aqui está um resumo inteligente e minha recomendação de estratégia:
+                </div>
+            `;
+
+            responseHTML += `<div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+                <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 12px; flex: 1; border: 1px solid var(--glass-border);">
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 5px;">Total Gasto</p>
+                    <h4 style="font-size: 1.3rem; color: var(--danger-color);">R$ ${totalExpenses.toFixed(2)}</h4>
+                </div>
+                <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 12px; flex: 1; border: 1px solid var(--glass-border);">
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 5px;">Contas Pendentes</p>
+                    <h4 style="font-size: 1.3rem; color: #f59e0b;">R$ ${pendingExpenses.toFixed(2)}</h4>
+                </div>
+            </div>`;
+
+            responseHTML += `<h4 style="color: var(--accent-color); margin-bottom: 1rem; display: flex; align-items: center; gap: 8px;">
+                <i data-lucide="lightbulb" style="width: 20px;"></i> Estratégia e Recomendações
+            </h4>`;
+            
+            responseHTML += `<ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 10px; color: var(--text-secondary);">`;
+
+            // Condicional 1: Contas Pendentes
+            if (pendingExpenses > 0) {
+                responseHTML += `<li>
+                    <strong style="color: #f8fafc;">Atenção com Pendências:</strong> Você tem <strong>R$ ${pendingExpenses.toFixed(2)}</strong> em contas não pagas. 
+                    Sugiro que priorize o pagamento da conta de <em>"${pendingTransactions[0].desc}"</em> para evitar juros.
+                </li>`;
+            } else {
+                responseHTML += `<li><strong style="color: var(--success-color);">Excelente!</strong> Você não tem contas pendentes no momento. Continue assim para evitar juros.</li>`;
+            }
+
+            // Condicional 2: Maior Categoria de Gastos
+            if (mostExpensiveCat) {
+                responseHTML += `<li>
+                    <strong style="color: #f8fafc;">Foco em Redução:</strong> Sua maior despesa no momento é na categoria <span class="category-tag">${mostExpensiveCat}</span> (R$ ${catTotals[mostExpensiveCat].toFixed(2)}). 
+                    ${mostExpensiveCat === 'Lazer' ? 'Tente programar saídas gratuitas ou reduzir pedidos de delivery neste fim de semana.' : 'Analise se há como economizar ou renegociar faturas relacionadas.'}
+                </li>`;
+            }
+
+            // Condicional 3: Saúde Financeira e Saldo Restante
+            let balance = incomeValue - totalExpenses;
+            if (balance > incomeValue * 0.2) {
+                responseHTML += `<li>
+                    <strong style="color: var(--success-color);">Sobrou Dinheiro!</strong> Você ainda tem R$ ${balance.toFixed(2)} disponíveis. 
+                    Recomendo <strong>investir 20% do que sobrou</strong> na sua aba de Investimentos ou fortalecer sua Reserva de Emergência antes do mês fechar.
+                </li>`;
+            } else if (balance > 0) {
+                responseHTML += `<li>
+                    <strong style="color: #f59e0b;">Alerta Amarelo:</strong> Seu orçamento está chegando no limite. Faltam R$ ${balance.toFixed(2)} para acabar sua renda disponível. Evite cartões de crédito nessa reta final.
+                </li>`;
+            } else {
+                responseHTML += `<li>
+                    <strong style="color: var(--danger-color);">Alerta Vermelho!</strong> Seus gastos (R$ ${totalExpenses.toFixed(2)}) ultrapassaram seu dinheiro disponível (R$ ${incomeValue.toFixed(2)}).
+                    Pare imediatamente gastos superférfluos e avalie possíveis cortes no próximo mês para se estabilizar.
+                </li>`;
+            }
+
+            responseHTML += `</ul>`;
+
+            aiResponseText.innerHTML = responseHTML;
+            lucide.createIcons(); // Recria os ícones injetados
+        }, 2500);
+    });
+}

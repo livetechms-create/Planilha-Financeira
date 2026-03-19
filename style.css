@@ -22,6 +22,14 @@
     font-family: 'Inter', sans-serif;
 }
 
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.spin-icon {
+    animation: spin 1s linear infinite;
+}
+
 body {
     background-color: var(--bg-color);
     color: var(--text-primary);
