@@ -223,23 +223,41 @@
             
             <!-- ABA MEU COFRE -->
             <div id="tab-vault" class="tab-content">
-                <div class="card glass-card" style="text-align: center; padding: 3rem 2rem;">
-                    <div style="background: rgba(99, 241, 123, 0.1); width: 100px; height: 100px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; color: var(--accent-color); border: 2px solid rgba(99, 241, 123, 0.3);">
-                        <i data-lucide="piggy-bank" style="width: 50px; height: 50px;"></i>
+                <div class="card glass-card" style="text-align: center; padding: 2rem;">
+                    <div style="background: rgba(99, 241, 123, 0.1); width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; color: var(--accent-color); border: 2px solid rgba(99, 241, 123, 0.3);">
+                        <i data-lucide="piggy-bank" style="width: 40px; height: 40px;"></i>
                     </div>
-                    <h2 style="font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 5px;">Total Guardado no Banco</h2>
-                    <h1 id="vault-display" style="font-size: 3rem; color: white; margin-bottom: 2.5rem; letter-spacing: -1px;">R$ 0,00</h1>
+                    <h2 style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 5px;">Saldo Atual no Cofre</h2>
+                    <h1 id="vault-display" style="font-size: 2.8rem; color: white; margin-bottom: 2rem;">R$ 0,00</h1>
                     
-                    <div style="max-width: 320px; margin: 0 auto; background: rgba(0,0,0,0.2); padding: 1.5rem; border-radius: 20px; border: 1px solid var(--glass-border);">
-                        <label style="display: block; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 15px; text-align: left;">Atualizar Saldo do Cofre</label>
+                    <!-- Projeções -->
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 2.5rem;">
+                        <div style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: 12px; border: 1px solid var(--glass-border);">
+                            <p style="font-size: 0.7rem; color: var(--text-secondary);">Rendimento (1 mês)</p>
+                            <h5 id="vault-yield-1m" style="font-size: 0.95rem; color: var(--success-color); margin-top: 5px;">+ R$ 0,00</h5>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: 12px; border: 1px solid var(--glass-border);">
+                            <p style="font-size: 0.7rem; color: var(--text-secondary);">Rendimento (6 meses)</p>
+                            <h5 id="vault-yield-6m" style="font-size: 0.95rem; color: var(--success-color); margin-top: 5px;">+ R$ 0,00</h5>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: 12px; border: 1px solid var(--glass-border);">
+                            <p style="font-size: 0.7rem; color: var(--text-secondary);">Rendimento (1 ano)</p>
+                            <h5 id="vault-yield-1y" style="font-size: 0.95rem; color: var(--success-color); margin-top: 5px;">+ R$ 0,00</h5>
+                        </div>
+                    </div>
+
+                    <div style="max-width: 350px; margin: 0 auto; background: rgba(0,0,0,0.2); padding: 1.5rem; border-radius: 20px; border: 1px solid var(--glass-border);">
+                        <label style="display: block; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 15px; text-align: left;">Adicionar ou Retirar Valor</label>
+                        <input type="number" id="vault-input" placeholder="Valor (R$)" step="0.01" style="background: #0f172a; border: 1px solid var(--glass-border); padding: 1rem; border-radius: 12px; color: white; width: 100%; outline: none; font-size: 1rem; margin-bottom: 1rem;">
                         <div style="display: flex; gap: 10px;">
-                            <input type="number" id="vault-input" placeholder="Novo Valor (R$)" step="0.01" style="background: #0f172a; border: 1px solid var(--glass-border); padding: 1rem; border-radius: 12px; color: white; flex: 1; outline: none; font-size: 1rem;">
-                            <button id="update-vault-btn" class="btn-add" style="border-radius: 12px; padding: 1rem; width: 55px; justify-content: center;">
-                                <i data-lucide="refresh-cw"></i>
+                            <button id="add-vault-btn" class="btn-add" style="flex: 1; justify-content: center; height: 50px; border-radius: 12px;">
+                                <i data-lucide="plus"></i> Depositar
+                            </button>
+                            <button id="sub-vault-btn" class="btn-cancel" style="flex: 1; justify-content: center; height: 50px; border-radius: 12px; border-color: #ef4444; color: #ef4444;">
+                                <i data-lucide="minus"></i> Retirar
                             </button>
                         </div>
                     </div>
-                    <p style="margin-top: 2rem; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; max-width: 400px; margin-left: auto; margin-right: auto;">Este valor representa seu patrimônio total líquido disponível em contas poupança ou corrente.</p>
                 </div>
             </div>
 

@@ -475,28 +475,72 @@ function updateUI() {
 // --- COFRE ---
 function updateVaultUI() {
     const vaultDisplay = document.getElementById('vault-display');
+    const yield1m = document.getElementById('vault-yield-1m');
+    const yield6m = document.getElementById('vault-yield-6m');
+    const yield1y = document.getElementById('vault-yield-1y');
+
     if (vaultDisplay) {
         vaultDisplay.innerText = `R$ ${vaultValue.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
     }
+
+    // Cálculos de Rendimento (Base: 100% CDI ~ 0.85% ao mês)
+    const monthlyRate = 0.0085;
+    if (yield1m) {
+        const y1m = vaultValue * monthlyRate;
+        yield1m.innerText = `+ R$ ${y1m.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
+    }
+    if (yield6m) {
+        // Juros compostos: M = P(1+i)^n - P
+        const y6m = vaultValue * (Math.pow(1 + monthlyRate, 6) - 1);
+        yield6m.innerText = `+ R$ ${y6m.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
+    }
+    if (yield1y) {
+        const y1y = vaultValue * (Math.pow(1 + monthlyRate, 12) - 1);
+        yield1y.innerText = `+ R$ ${y1y.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
+    }
 }
 
-const updateVaultBtn = document.getElementById('update-vault-btn');
-if (updateVaultBtn) {
-    updateVaultBtn.onclick = () => {
+const addVaultBtn = document.getElementById('add-vault-btn');
+const subVaultBtn = document.getElementById('sub-vault-btn');
+
+if (addVaultBtn) {
+    addVaultBtn.onclick = () => {
         const input = document.getElementById('vault-input');
-        const newVal = parseFloat(input.value);
-        if (!isNaN(newVal)) {
-            vaultValue = newVal;
+        const val = parseFloat(input.value);
+        if (!isNaN(val) && val > 0) {
+            vaultValue += val; // Soma
             updateVaultUI();
             saveToLocalStorage();
             input.value = '';
-            
-            // Adiciona uma pequena animação de brilho ao valor
-            const display = document.getElementById('vault-display');
-            display.style.color = 'var(--accent-color)';
-            setTimeout(() => display.style.color = 'white', 500);
+            animateVault();
         }
     };
+}
+
+if (subVaultBtn) {
+    subVaultBtn.onclick = () => {
+        const input = document.getElementById('vault-input');
+        const val = parseFloat(input.value);
+        if (!isNaN(val) && val > 0) {
+            vaultValue = Math.max(0, vaultValue - val); // Subtrai (não deixa negativo)
+            updateVaultUI();
+            saveToLocalStorage();
+            input.value = '';
+            animateVault();
+        }
+    };
+}
+
+function animateVault() {
+    const display = document.getElementById('vault-display');
+    if (display) {
+        display.style.transform = 'scale(1.1)';
+        display.style.color = 'var(--accent-color)';
+        setTimeout(() => {
+            display.style.transform = 'scale(1)';
+            display.style.color = 'white';
+        }, 300);
+    }
 }
 
 // --- CONFIGURAÇÕES ---
