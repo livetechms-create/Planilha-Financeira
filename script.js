@@ -5,7 +5,8 @@ function saveToLocalStorage() {
             incomeValue: incomeValue,
             transactions: transactions,
             userData: userData,
-            savingsGoalPercent: savingsGoalPercent // Salva a meta
+            savingsGoalPercent: savingsGoalPercent,
+            vaultValue: vaultValue // Salva o cofre
         };
         localStorage.setItem('financeFlowData', JSON.stringify(dataToSave));
     } catch (e) {
@@ -30,6 +31,7 @@ function loadFromLocalStorage() {
                 userData = { ...userData, ...parsed.userData };
             }
             if (parsed.savingsGoalPercent !== undefined) savingsGoalPercent = parsed.savingsGoalPercent;
+            if (parsed.vaultValue !== undefined) vaultValue = parsed.vaultValue;
             return true;
         }
     } catch (e) {
@@ -49,7 +51,8 @@ let userData = {
 
 // Variáveis de Estado
 let editingTransactionId = null;
-let savingsGoalPercent = 20; // Padrão 20%
+let savingsGoalPercent = 20; 
+let vaultValue = 0.00; // Valor no cofre
 
 // Elementos do DOM
 const tbody = document.getElementById('transaction-tbody');
@@ -466,6 +469,34 @@ function updateUI() {
     }
 
     updateSettingsUI();
+    updateVaultUI();
+}
+
+// --- COFRE ---
+function updateVaultUI() {
+    const vaultDisplay = document.getElementById('vault-display');
+    if (vaultDisplay) {
+        vaultDisplay.innerText = `R$ ${vaultValue.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
+    }
+}
+
+const updateVaultBtn = document.getElementById('update-vault-btn');
+if (updateVaultBtn) {
+    updateVaultBtn.onclick = () => {
+        const input = document.getElementById('vault-input');
+        const newVal = parseFloat(input.value);
+        if (!isNaN(newVal)) {
+            vaultValue = newVal;
+            updateVaultUI();
+            saveToLocalStorage();
+            input.value = '';
+            
+            // Adiciona uma pequena animação de brilho ao valor
+            const display = document.getElementById('vault-display');
+            display.style.color = 'var(--accent-color)';
+            setTimeout(() => display.style.color = 'white', 500);
+        }
+    };
 }
 
 // --- CONFIGURAÇÕES ---
